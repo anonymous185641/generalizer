@@ -1,0 +1,25 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p2460 [shape=circle, label="p2460"];
+    p2462 [shape=circle, label="p0\n●"];
+    p2464 [shape=circle, label="p2464"];
+    p2467 [shape=circle, label="p2467"];
+
+    t2459 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_Server_REQ_1"];
+    t2461 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_Server_DONE_3"];
+    t2463 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_Server_ALARM_4"];
+    t2465 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_Server_ACK_2"];
+    t2466 [shape=box, width=0.3, height=0.3, label="", xlabel="ε"];
+
+    t2459 -> p2460;
+    p2460 -> t2461;
+    t2461 -> p2462;
+    t2463 -> p2464;
+    p2464 -> t2465;
+    t2465 -> p2462;
+    p2462 -> t2459;
+    p2462 -> t2463;
+    p2462 -> t2466;
+    t2466 -> p2467;
+}

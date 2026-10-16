@@ -1,0 +1,10 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	q0 [shape=doublecircle];
+	qF98301 [shape=circle];
+	init->q0;
+	q0->q0 [label="recvfrom_client_log_3"];
+	q0->qF98301 [label="Epsilon"];
+}

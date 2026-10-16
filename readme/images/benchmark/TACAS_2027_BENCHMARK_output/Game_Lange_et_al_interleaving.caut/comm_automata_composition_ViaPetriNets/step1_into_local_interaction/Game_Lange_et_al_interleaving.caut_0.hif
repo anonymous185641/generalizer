@@ -1,0 +1,13 @@
+loopS(
+	seq(
+		alt(
+			A0 -- bwin ->| [1],
+			A0 -- cwin ->| [2]
+		),
+		par(
+			sig -> A0 [3],
+			msg -> A0 [4]
+		),
+		A0 -- free ->| [5]
+	)
+)

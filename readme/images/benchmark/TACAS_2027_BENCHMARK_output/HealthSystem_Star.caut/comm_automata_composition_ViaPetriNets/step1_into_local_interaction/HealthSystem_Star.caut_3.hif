@@ -1,0 +1,10 @@
+loopS(
+	seq(
+		connect -> A3 [12],
+		par(
+			account -> A3 [6],
+			A3 -- logCreated ->| [7]
+		),
+		A3 -- connectOk ->| [13]
+	)
+)

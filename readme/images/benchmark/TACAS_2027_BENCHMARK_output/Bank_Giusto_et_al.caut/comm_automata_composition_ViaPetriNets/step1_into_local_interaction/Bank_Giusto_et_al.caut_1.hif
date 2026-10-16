@@ -1,0 +1,22 @@
+loopS(
+	alt(
+		seq(
+			askprice -> Seller [1],
+			Seller -- price ->| [2]
+		),
+		seq(
+			buy -> Seller [3],
+			Seller -- transaction ->| [8],
+			alt(
+				seq(
+					auth -> Seller [9],
+					Seller -- conf ->| [7]
+				),
+				seq(
+					refusal -> Seller [10],
+					Seller -- cancel ->| [6]
+				)
+			)
+		)
+	)
+)

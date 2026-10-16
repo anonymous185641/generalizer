@@ -1,0 +1,15 @@
+seq(
+	string -> s [1],
+	par(
+		s -- int ->| [2],
+		s -- int ->| [4]
+	),
+	alt(
+		seq(
+			ok -> s [5],
+			string -> s [6],
+			s -- date ->| [7]
+		),
+		quit -> s [8]
+	)
+)

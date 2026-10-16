@@ -1,0 +1,25 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	s1 [shape=doublecircle];
+	s2 [shape=circle];
+	s3 [shape=circle];
+	s6 [shape=circle];
+	s4 [shape=circle];
+	s5 [shape=circle];
+	s7 [shape=circle];
+	s8 [shape=circle];
+	qF17039 [shape=circle];
+	init->s1;
+	s1->s2 [label="recvfrom_A1_sendData_1"];
+	s2->s3 [label="sendto_A2_subscribed_2"];
+	s3->s6 [label="recvfrom_A2_nok_3"];
+	s6->s1 [label="sendto_A1_notSubscribed_4"];
+	s3->s4 [label="recvfrom_A2_ok_5"];
+	s4->s5 [label="sendto_A3_account_6"];
+	s5->s7 [label="recvfrom_A3_logCreated_7"];
+	s7->s8 [label="sendto_A4_fwd_8"];
+	s8->s1 [label="recvfrom_A4_fwdOk_9"];
+	s1->qF17039 [label="Epsilon"];
+}

@@ -1,0 +1,25 @@
+loopS(
+	seq(
+		A1 -- sendData -> A0,
+		A0 -- subscribed -> A2,
+		alt(
+			seq(
+				A2 -- nok -> A0,
+				A0 -- notSubscribed -> A1
+			),
+			seq(
+				A2 -- Ok -> A0,
+				A0 -- connect -> A3,
+				par(
+					A0 -- account -> A3,
+					A3 -- logCreated -> A0
+				),
+				A3 -- connectOk -> A0,
+				A0 -- fwd -> A4,
+				A4 -- fwdOk -> A0,
+				A4 -- helpReq -> A5,
+				A5 -- provideService -> A1
+			)
+		)
+	)
+)

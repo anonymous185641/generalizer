@@ -1,0 +1,10 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	s1 [shape=doublecircle];
+	s2 [shape=circle];
+	init->s1;
+	s1->s2 [label="recvfrom(A0,account)[6]"];
+	s2->s1 [label="sendto(A0,logCreated)[7]"];
+}

@@ -1,0 +1,11 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	s1 [shape=doublecircle];
+	s2 [shape=circle];
+	init->s1;
+	s1->s2 [label="recvfrom(A0,subscribed)[2]"];
+	s2->s1 [label="sendto(A0,nok)[3]"];
+	s2->s1 [label="sendto(A0,ok)[5]"];
+}

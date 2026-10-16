@@ -1,0 +1,11 @@
+loopS(
+	seq(
+		transaction -> Bank [8],
+		Bank -- askpay ->| [4],
+		infopay -> Bank [5],
+		alt(
+			Bank -- auth ->| [9],
+			Bank -- refusal ->| [10]
+		)
+	)
+)

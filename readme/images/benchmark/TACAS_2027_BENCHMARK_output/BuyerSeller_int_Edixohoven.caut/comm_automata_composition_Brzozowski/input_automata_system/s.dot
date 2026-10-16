@@ -1,0 +1,23 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	q0 [shape=circle];
+	q1 [shape=circle];
+	q2 [shape=circle];
+	q4 [shape=circle];
+	q3 [shape=circle];
+	q7 [shape=doublecircle];
+	q5 [shape=circle];
+	q6 [shape=circle];
+	init->q0;
+	q0->q1 [label="recvfrom(b1,string)[1]"];
+	q1->q2 [label="sendto(b2,int)[4]"];
+	q2->q4 [label="sendto(b1,int)[2]"];
+	q1->q3 [label="sendto(b1,int)[2]"];
+	q3->q4 [label="sendto(b2,int)[4]"];
+	q4->q7 [label="recvfrom(b2,quit)[8]"];
+	q4->q5 [label="recvfrom(b2,ok)[5]"];
+	q5->q6 [label="recvfrom(b2,string)[6]"];
+	q6->q7 [label="sendto(b2,date)[7]"];
+}

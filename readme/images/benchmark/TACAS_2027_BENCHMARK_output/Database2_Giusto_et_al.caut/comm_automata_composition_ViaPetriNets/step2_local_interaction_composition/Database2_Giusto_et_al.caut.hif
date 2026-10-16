@@ -1,0 +1,15 @@
+loopS(
+	alt(
+		∅,
+		seq(
+			Client -- req -> Server,
+			Server -- res -> Client,
+			Client -- acks -> Server,
+			Server -- logs -> Database
+		),
+		seq(
+			Client -- logc -> Database,
+			Database -- ackd -> Client
+		)
+	)
+)

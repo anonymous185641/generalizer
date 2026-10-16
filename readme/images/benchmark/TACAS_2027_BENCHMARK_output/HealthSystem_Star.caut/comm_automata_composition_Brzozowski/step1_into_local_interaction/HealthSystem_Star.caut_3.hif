@@ -1,0 +1,17 @@
+loopS(
+	seq(
+		connect -> A3 [12],
+		alt(
+			seq(
+				A3 -- logCreated ->| [7],
+				account -> A3 [6],
+				A3 -- connectOk ->| [13]
+			),
+			seq(
+				account -> A3 [6],
+				A3 -- logCreated ->| [7],
+				A3 -- connectOk ->| [13]
+			)
+		)
+	)
+)

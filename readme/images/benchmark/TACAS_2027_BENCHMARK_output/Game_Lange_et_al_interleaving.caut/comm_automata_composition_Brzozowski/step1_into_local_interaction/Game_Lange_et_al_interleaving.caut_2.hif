@@ -1,0 +1,35 @@
+loopS(
+	alt(
+		seq(
+			cwin -> A2 [2],
+			A2 -- busy ->| [8],
+			A2 -- blose ->| [7],
+			A2 -- msg ->| [4]
+		),
+		seq(
+			A2 -- busy ->| [8],
+			alt(
+				seq(
+					close -> A2 [6],
+					A2 -- msg ->| [4]
+				),
+				seq(
+					cwin -> A2 [2],
+					A2 -- blose ->| [7],
+					A2 -- msg ->| [4]
+				)
+			)
+		),
+		seq(
+			alt(
+				close -> A2 [6],
+				seq(
+					cwin -> A2 [2],
+					A2 -- blose ->| [7]
+				)
+			),
+			A2 -- busy ->| [8],
+			A2 -- msg ->| [4]
+		)
+	)
+)

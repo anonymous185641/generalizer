@@ -1,0 +1,24 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	carol0 [shape=doublecircle];
+	carol3 [shape=circle];
+	carol2 [shape=circle];
+	carol1 [shape=circle];
+	carol4 [shape=circle];
+	carol5 [shape=circle];
+	qF12078 [shape=circle];
+	init->carol0;
+	carol0->carol3 [label="recvfrom_A1_close_6"];
+	carol0->carol2 [label="sendto_A3_busy_8"];
+	carol0->carol1 [label="recvfrom_A0_cwin_2"];
+	carol1->carol4 [label="sendto_A3_busy_8"];
+	carol1->carol3 [label="sendto_A1_blose_7"];
+	carol2->carol5 [label="recvfrom_A1_close_6"];
+	carol2->carol4 [label="recvfrom_A0_cwin_2"];
+	carol3->carol5 [label="sendto_A3_busy_8"];
+	carol4->carol5 [label="sendto_A1_blose_7"];
+	carol5->carol0 [label="sendto_A0_msg_4"];
+	carol0->qF12078 [label="Epsilon"];
+}

@@ -1,0 +1,42 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p11287 [shape=circle, label="p11287"];
+    p11289 [shape=circle, label="p11289"];
+    p11291 [shape=circle, label="p2"];
+    p11292 [shape=circle, label="p1"];
+    p11294 [shape=circle, label="p3"];
+    p11296 [shape=circle, label="p11296"];
+    p11298 [shape=circle, label="p11298"];
+    p11300 [shape=circle, label="p0\n●"];
+    p11302 [shape=circle, label="p11302"];
+
+    t11286 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_b1_string_1"];
+    t11288 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_b2_int_4"];
+    t11290 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_b1_int_2"];
+    t11293 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_b2_quit_8"];
+    t11295 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_b2_ok_5"];
+    t11297 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_b2_string_6"];
+    t11299 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_b2_date_7"];
+    t11301 [shape=box, width=0.3, height=0.3, label="", xlabel="ε"];
+
+    t11286 -> p11287;
+    p11287 -> t11288;
+    t11286 -> p11289;
+    p11289 -> t11290;
+    t11288 -> p11291;
+    t11290 -> p11292;
+    t11293 -> p11294;
+    t11295 -> p11296;
+    p11296 -> t11297;
+    t11297 -> p11298;
+    p11298 -> t11299;
+    t11299 -> p11294;
+    p11300 -> t11286;
+    p11292 -> t11293;
+    p11292 -> t11295;
+    p11291 -> t11293;
+    p11291 -> t11295;
+    p11294 -> t11301;
+    t11301 -> p11302;
+}

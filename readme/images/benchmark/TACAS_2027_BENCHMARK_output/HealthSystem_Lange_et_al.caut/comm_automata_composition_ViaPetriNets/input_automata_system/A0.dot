@@ -1,0 +1,23 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	s1 [shape=doublecircle];
+	s2 [shape=circle];
+	s3 [shape=circle];
+	s6 [shape=circle];
+	s4 [shape=circle];
+	s5 [shape=circle];
+	s7 [shape=circle];
+	s8 [shape=circle];
+	init->s1;
+	s1->s2 [label="recvfrom(A1,sendData)[1]"];
+	s2->s3 [label="sendto(A2,subscribed)[2]"];
+	s3->s6 [label="recvfrom(A2,nok)[3]"];
+	s6->s1 [label="sendto(A1,notSubscribed)[4]"];
+	s3->s4 [label="recvfrom(A2,ok)[5]"];
+	s4->s5 [label="sendto(A3,account)[6]"];
+	s5->s7 [label="recvfrom(A3,logCreated)[7]"];
+	s7->s8 [label="sendto(A4,fwd)[8]"];
+	s8->s1 [label="recvfrom(A4,fwdOk)[9]"];
+}

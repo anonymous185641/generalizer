@@ -1,0 +1,16 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	Stable [shape=doublecircle];
+	Filter [shape=circle];
+	Respond [shape=circle];
+	qF2841 [shape=circle];
+	init->Stable;
+	Stable->Filter [label="sendto_A1_newFilterRequest_1"];
+	Filter->Respond [label="recvfrom_A1_itemToBeFiltered_2"];
+	Filter->Stable [label="recvfrom_A1_noMoreItems_3"];
+	Respond->Filter [label="sendto_A1_ok_4"];
+	Respond->Filter [label="sendto_A1_remove_5"];
+	Stable->qF2841 [label="Epsilon"];
+}

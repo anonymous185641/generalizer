@@ -1,0 +1,15 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	idle [shape=doublecircle];
+	service [shape=circle];
+	fault [shape=circle];
+	qF2481 [shape=circle];
+	init->idle;
+	idle->service [label="recvfrom_User_REQ_1"];
+	service->idle [label="recvfrom_User_DONE_3"];
+	idle->fault [label="recvfrom_User_ALARM_4"];
+	fault->idle [label="sendto_User_ACK_2"];
+	idle->qF2481 [label="Epsilon"];
+}

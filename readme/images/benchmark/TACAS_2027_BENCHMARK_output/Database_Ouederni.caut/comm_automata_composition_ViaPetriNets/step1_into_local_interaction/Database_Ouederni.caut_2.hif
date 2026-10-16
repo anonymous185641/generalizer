@@ -1,0 +1,3 @@
+loopS(
+	log -> database [3]
+)

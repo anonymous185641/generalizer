@@ -1,0 +1,12 @@
+seq(
+	not -> usr [1],
+	loopS(
+		alt(
+			hbt -> usr [6],
+			seq(
+				sta -> usr [3],
+				usr -- rep ->| [4]
+			)
+		)
+	)
+)

@@ -1,0 +1,15 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	q0 [shape=circle];
+	q1 [shape=doublecircle];
+	q2 [shape=circle];
+	qF106706 [shape=circle];
+	init->q0;
+	q0->q1 [label="recvfrom_srv_not_1"];
+	q1->q2 [label="recvfrom_dev_sta_3"];
+	q2->q1 [label="sendto_srv_rep_4"];
+	q1->q1 [label="recvfrom_dev_hbt_6"];
+	q1->qF106706 [label="Epsilon"];
+}

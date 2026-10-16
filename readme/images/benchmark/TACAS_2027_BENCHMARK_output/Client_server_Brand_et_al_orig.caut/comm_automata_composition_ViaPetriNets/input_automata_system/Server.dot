@@ -1,0 +1,13 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	idle [shape=doublecircle];
+	service [shape=circle];
+	fault [shape=circle];
+	init->idle;
+	idle->service [label="recvfrom(User,REQ)[1]"];
+	service->idle [label="recvfrom(User,DONE)[3]"];
+	idle->fault [label="recvfrom(User,ALARM)[4]"];
+	fault->idle [label="sendto(User,ACK)[2]"];
+}

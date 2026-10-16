@@ -1,0 +1,22 @@
+loopS(
+	seq(
+		par(
+			A2 -- busy -> A3,
+			alt(
+				seq(
+					A0 -- bwin -> A1,
+					A1 -- close -> A2
+				),
+				seq(
+					A0 -- cwin -> A2,
+					A2 -- blose -> A1
+				)
+			)
+		),
+		par(
+			A1 -- sig -> A0,
+			A2 -- msg -> A0
+		),
+		A0 -- free -> A3
+	)
+)

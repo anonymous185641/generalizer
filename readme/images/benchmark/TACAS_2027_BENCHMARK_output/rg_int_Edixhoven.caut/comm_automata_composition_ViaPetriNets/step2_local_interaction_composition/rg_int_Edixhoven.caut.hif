@@ -1,0 +1,10 @@
+seq(
+	a -- int -> b,
+	par(
+		a -- bool -> b,
+		alt(
+			b -- yes -> a,
+			b -- no -> a
+		)
+	)
+)

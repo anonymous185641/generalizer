@@ -1,0 +1,18 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	q0 [shape=doublecircle];
+	q1 [shape=circle];
+	q2 [shape=circle];
+	q3 [shape=circle];
+	q4 [shape=circle];
+	init->q0;
+	q0->q1 [label="recvfrom(A0,newFilterRequest)[1]"];
+	q1->q0 [label="sendto(A0,noMoreItems)[2]"];
+	q1->q2 [label="sendto(A0,itemToBeFiltered)[3]"];
+	q2->q3 [label="recvfrom(A0,Ok)[5]"];
+	q2->q4 [label="recvfrom(A0,remove)[4]"];
+	q3->q1 [label="recvfrom(A0,remove)[4]"];
+	q4->q1 [label="recvfrom(A0,Ok)[5]"];
+}

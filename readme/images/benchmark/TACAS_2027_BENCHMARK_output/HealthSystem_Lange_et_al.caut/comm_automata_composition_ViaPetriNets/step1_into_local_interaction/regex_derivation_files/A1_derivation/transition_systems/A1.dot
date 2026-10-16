@@ -1,0 +1,13 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	s1 [shape=doublecircle];
+	s2 [shape=circle];
+	qF17070 [shape=circle];
+	init->s1;
+	s1->s2 [label="sendto_A0_sendData_1"];
+	s2->s1 [label="recvfrom_A0_notSubscribed_4"];
+	s2->s1 [label="recvfrom_A5_provideService_10"];
+	s1->qF17070 [label="Epsilon"];
+}

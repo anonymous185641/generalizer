@@ -1,0 +1,10 @@
+seq(
+	srv -- not ->| [1],
+	srv -- cfg ->| [2],
+	loopS(
+		alt(
+			rep -> srv [4],
+			srv -- png ->| [5]
+		)
+	)
+)

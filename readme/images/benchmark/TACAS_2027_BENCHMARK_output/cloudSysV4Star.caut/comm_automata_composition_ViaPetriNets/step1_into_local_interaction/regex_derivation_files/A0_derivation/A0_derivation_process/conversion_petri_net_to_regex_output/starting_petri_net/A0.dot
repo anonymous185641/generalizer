@@ -1,0 +1,33 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p95610 [shape=circle, label="p95610"];
+    p95612 [shape=circle, label="p1"];
+    p95615 [shape=circle, label="p95615"];
+    p95617 [shape=circle, label="p95617"];
+    p95619 [shape=circle, label="p0\n●"];
+    p95621 [shape=circle, label="p95621"];
+
+    t95609 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A2_connect_1"];
+    t95611 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A2_syncAccess_3"];
+    t95613 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A1_access_4"];
+    t95614 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A2_logout_5"];
+    t95616 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A1_syncLogout_7"];
+    t95618 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A1_syncLog_6"];
+    t95620 [shape=box, width=0.3, height=0.3, label="", xlabel="ε"];
+
+    t95609 -> p95610;
+    p95610 -> t95611;
+    t95611 -> p95612;
+    t95613 -> p95612;
+    t95614 -> p95615;
+    p95615 -> t95616;
+    t95616 -> p95617;
+    p95617 -> t95618;
+    t95618 -> p95619;
+    p95619 -> t95609;
+    p95619 -> t95620;
+    p95612 -> t95613;
+    p95612 -> t95614;
+    t95620 -> p95621;
+}

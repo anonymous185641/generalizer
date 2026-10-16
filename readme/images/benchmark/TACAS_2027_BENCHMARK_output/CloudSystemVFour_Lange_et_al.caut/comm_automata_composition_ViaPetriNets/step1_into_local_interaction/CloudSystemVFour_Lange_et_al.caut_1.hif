@@ -1,0 +1,11 @@
+loopS(
+	seq(
+		setup -> A1 [7],
+		loopS(
+			access -> A1 [3]
+		),
+		syncLogout -> A1 [5],
+		A1 -- log ->| [8],
+		A1 -- syncLog ->| [6]
+	)
+)

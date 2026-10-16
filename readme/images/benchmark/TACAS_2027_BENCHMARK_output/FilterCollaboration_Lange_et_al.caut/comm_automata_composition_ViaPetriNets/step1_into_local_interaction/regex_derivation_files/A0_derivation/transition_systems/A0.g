@@ -1,0 +1,11 @@
+.outputs
+.dummy Epsilon recvfrom_A1_itemToBeFiltered_2 recvfrom_A1_noMoreItems_3 sendto_A1_newFilterRequest_1 sendto_A1_ok_4 sendto_A1_remove_5 
+.state graph
+Stable sendto_A1_newFilterRequest_1 Filter
+Filter recvfrom_A1_itemToBeFiltered_2 Respond
+Filter recvfrom_A1_noMoreItems_3 Stable
+Respond sendto_A1_ok_4 Filter
+Respond sendto_A1_remove_5 Filter
+Stable Epsilon qF2841
+.marking {Stable}
+.end

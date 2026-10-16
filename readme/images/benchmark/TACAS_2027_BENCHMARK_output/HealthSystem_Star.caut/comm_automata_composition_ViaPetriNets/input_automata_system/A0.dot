@@ -1,0 +1,30 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	q0 [shape=doublecircle];
+	q1 [shape=circle];
+	q2 [shape=circle];
+	q4 [shape=circle];
+	q3 [shape=circle];
+	q5 [shape=circle];
+	q7 [shape=circle];
+	q6 [shape=circle];
+	q8 [shape=circle];
+	q9 [shape=circle];
+	q10 [shape=circle];
+	init->q0;
+	q0->q1 [label="recvfrom(A1,sendData)[1]"];
+	q1->q2 [label="sendto(A2,subscribed)[2]"];
+	q2->q4 [label="recvfrom(A2,Ok)[5]"];
+	q2->q3 [label="recvfrom(A2,nok)[3]"];
+	q3->q0 [label="sendto(A1,notSubscribed)[4]"];
+	q4->q5 [label="sendto(A3,connect)[12]"];
+	q5->q7 [label="sendto(A3,account)[6]"];
+	q5->q6 [label="recvfrom(A3,logCreated)[7]"];
+	q7->q8 [label="recvfrom(A3,logCreated)[7]"];
+	q6->q8 [label="sendto(A3,account)[6]"];
+	q8->q9 [label="recvfrom(A3,connectOk)[13]"];
+	q9->q10 [label="sendto(A4,fwd)[8]"];
+	q10->q0 [label="recvfrom(A4,fwdOk)[9]"];
+}

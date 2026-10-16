@@ -1,0 +1,13 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	bob0 [shape=doublecircle];
+	bob1 [shape=circle];
+	bob2 [shape=circle];
+	init->bob0;
+	bob0->bob1 [label="recvfrom(A0,bwin)[1]"];
+	bob1->bob2 [label="sendto(A2,close)[6]"];
+	bob0->bob2 [label="recvfrom(A2,blose)[7]"];
+	bob2->bob0 [label="sendto(A0,sig)[3]"];
+}

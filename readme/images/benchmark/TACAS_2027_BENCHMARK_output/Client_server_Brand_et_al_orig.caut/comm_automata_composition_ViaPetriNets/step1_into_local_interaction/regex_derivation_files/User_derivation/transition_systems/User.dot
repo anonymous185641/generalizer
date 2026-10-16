@@ -1,0 +1,15 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	ready [shape=doublecircle];
+	wait [shape=circle];
+	register [shape=circle];
+	qF2458 [shape=circle];
+	init->ready;
+	ready->wait [label="sendto_Server_REQ_1"];
+	wait->ready [label="sendto_Server_DONE_3"];
+	ready->register [label="sendto_Server_ALARM_4"];
+	register->ready [label="recvfrom_Server_ACK_2"];
+	ready->qF2458 [label="Epsilon"];
+}

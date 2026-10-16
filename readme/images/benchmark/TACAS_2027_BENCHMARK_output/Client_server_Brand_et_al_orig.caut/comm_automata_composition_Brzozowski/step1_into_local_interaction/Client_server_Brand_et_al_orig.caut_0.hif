@@ -1,0 +1,12 @@
+loopS(
+	alt(
+		seq(
+			User -- ALARM ->| [4],
+			ACK -> User [2]
+		),
+		seq(
+			User -- REQ ->| [1],
+			User -- DONE ->| [3]
+		)
+	)
+)

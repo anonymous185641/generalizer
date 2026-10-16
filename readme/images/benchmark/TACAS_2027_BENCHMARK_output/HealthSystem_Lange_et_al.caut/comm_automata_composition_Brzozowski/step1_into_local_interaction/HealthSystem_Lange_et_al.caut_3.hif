@@ -1,0 +1,6 @@
+loopS(
+	seq(
+		account -> A3 [6],
+		A3 -- logCreated ->| [7]
+	)
+)

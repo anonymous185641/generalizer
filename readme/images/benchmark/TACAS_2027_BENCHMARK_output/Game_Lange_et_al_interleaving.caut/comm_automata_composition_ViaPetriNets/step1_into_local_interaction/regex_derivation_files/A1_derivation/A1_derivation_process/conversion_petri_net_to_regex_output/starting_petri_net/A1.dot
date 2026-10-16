@@ -1,0 +1,25 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p12064 [shape=circle, label="p12064"];
+    p12066 [shape=circle, label="p1"];
+    p12069 [shape=circle, label="p0\n●"];
+    p12071 [shape=circle, label="p12071"];
+
+    t12063 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A0_bwin_1"];
+    t12065 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A2_close_6"];
+    t12067 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A2_blose_7"];
+    t12068 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A0_sig_3"];
+    t12070 [shape=box, width=0.3, height=0.3, label="", xlabel="ε"];
+
+    t12063 -> p12064;
+    p12064 -> t12065;
+    t12065 -> p12066;
+    t12067 -> p12066;
+    t12068 -> p12069;
+    p12069 -> t12063;
+    p12069 -> t12067;
+    p12069 -> t12070;
+    p12066 -> t12068;
+    t12070 -> p12071;
+}

@@ -1,0 +1,26 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p1172 [shape=circle, label="p1172"];
+    p1174 [shape=circle, label="p1174"];
+    p1176 [shape=circle, label="p1176"];
+    p1178 [shape=circle, label="p0\n●"];
+    p1180 [shape=circle, label="p1180"];
+
+    t1171 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A0_connect_1"];
+    t1173 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A1_setup_7"];
+    t1175 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A0_syncAccess_2"];
+    t1177 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A0_logout_4"];
+    t1179 [shape=box, width=0.3, height=0.3, label="", xlabel="ε"];
+
+    t1171 -> p1172;
+    p1172 -> t1173;
+    t1173 -> p1174;
+    p1174 -> t1175;
+    t1175 -> p1176;
+    p1176 -> t1177;
+    t1177 -> p1178;
+    p1178 -> t1171;
+    p1178 -> t1179;
+    t1179 -> p1180;
+}

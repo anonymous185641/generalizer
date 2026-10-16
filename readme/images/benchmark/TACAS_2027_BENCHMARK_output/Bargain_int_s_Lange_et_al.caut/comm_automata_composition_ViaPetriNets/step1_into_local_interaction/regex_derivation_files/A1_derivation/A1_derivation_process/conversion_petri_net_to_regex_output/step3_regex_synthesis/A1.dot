@@ -1,0 +1,11 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p13051 [shape=circle, label="p0\n●"];
+    p13055 [shape=circle, label="p13055"];
+
+    t13061 [shape=box, width=0.3, height=0.3, label="", xlabel="((recvfrom_A0_hag_1.sendto_A0_price_2)*.recvfrom_A0_happy_3.ε)"];
+
+    p13051 -> t13061;
+    t13061 -> p13055;
+}

@@ -1,0 +1,34 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p3366 [shape=circle, label="p1"];
+    p3367 [shape=circle, label="p2"];
+    p3369 [shape=circle, label="p0\n●"];
+    p3371 [shape=circle, label="p3371"];
+    p3373 [shape=circle, label="p3373"];
+    p3376 [shape=circle, label="p3376"];
+
+    t3365 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A0_newFilterRequest_1"];
+    t3368 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A0_noMoreItems_2"];
+    t3370 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A0_itemToBeFiltered_3"];
+    t3372 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A0_Ok_5"];
+    t3374 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A0_remove_4"];
+    t3375 [shape=box, width=0.3, height=0.3, label="", xlabel="ε"];
+
+    t3365 -> p3366;
+    t3365 -> p3367;
+    t3368 -> p3369;
+    t3370 -> p3371;
+    p3371 -> t3372;
+    t3370 -> p3373;
+    p3373 -> t3374;
+    t3372 -> p3367;
+    t3374 -> p3366;
+    p3369 -> t3365;
+    p3369 -> t3375;
+    p3366 -> t3368;
+    p3366 -> t3370;
+    p3367 -> t3368;
+    p3367 -> t3370;
+    t3375 -> p3376;
+}

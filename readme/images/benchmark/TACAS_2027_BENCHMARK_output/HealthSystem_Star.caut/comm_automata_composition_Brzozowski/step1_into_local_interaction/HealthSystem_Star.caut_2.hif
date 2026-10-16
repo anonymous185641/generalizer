@@ -1,0 +1,9 @@
+loopS(
+	seq(
+		subscribed -> A2 [2],
+		alt(
+			A2 -- nok ->| [3],
+			A2 -- Ok ->| [5]
+		)
+	)
+)

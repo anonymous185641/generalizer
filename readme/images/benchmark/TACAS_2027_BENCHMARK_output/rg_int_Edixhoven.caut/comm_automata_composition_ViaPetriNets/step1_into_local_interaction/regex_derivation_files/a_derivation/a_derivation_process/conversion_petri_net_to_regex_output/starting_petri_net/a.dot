@@ -1,0 +1,29 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p13514 [shape=circle, label="p2"];
+    p13515 [shape=circle, label="p13515"];
+    p13517 [shape=circle, label="p13517"];
+    p13520 [shape=circle, label="p1"];
+    p13522 [shape=circle, label="p0\n●"];
+    p13523 [shape=circle, label="p13523"];
+
+    t13513 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_b_int_1"];
+    t13516 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_b_bool_2"];
+    t13518 [shape=box, width=0.3, height=0.3, label="", xlabel="ε"];
+    t13519 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_b_yes_3"];
+    t13521 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_b_no_4"];
+
+    t13513 -> p13514;
+    t13513 -> p13515;
+    p13515 -> t13516;
+    t13516 -> p13517;
+    p13517 -> t13518;
+    t13519 -> p13520;
+    t13521 -> p13520;
+    p13522 -> t13513;
+    p13520 -> t13518;
+    p13514 -> t13519;
+    p13514 -> t13521;
+    t13518 -> p13523;
+}

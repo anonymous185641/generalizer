@@ -1,0 +1,18 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	alice0 [shape=doublecircle];
+	alice1 [shape=circle];
+	alice2 [shape=circle];
+	alice3 [shape=circle];
+	alice4 [shape=circle];
+	init->alice0;
+	alice0->alice1 [label="sendto(A1,bwin)[1]"];
+	alice0->alice1 [label="sendto(A2,cwin)[2]"];
+	alice1->alice2 [label="recvfrom(A1,sig)[3]"];
+	alice1->alice3 [label="recvfrom(A2,msg)[4]"];
+	alice2->alice4 [label="recvfrom(A2,msg)[4]"];
+	alice3->alice4 [label="recvfrom(A1,sig)[3]"];
+	alice4->alice0 [label="sendto(A3,free)[5]"];
+}

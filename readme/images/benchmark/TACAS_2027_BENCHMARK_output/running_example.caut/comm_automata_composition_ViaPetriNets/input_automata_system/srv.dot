@@ -1,0 +1,13 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	q0 [shape=circle];
+	q1 [shape=circle];
+	q2 [shape=doublecircle];
+	init->q0;
+	q0->q1 [label="sendto(usr,not)[1]"];
+	q1->q2 [label="sendto(dev,cfg)[2]"];
+	q2->q2 [label="recvfrom(usr,rep)[4]"];
+	q2->q2 [label="sendto(dev,png)[5]"];
+}

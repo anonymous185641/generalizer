@@ -1,0 +1,14 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	Stable [shape=doublecircle];
+	Filter [shape=circle];
+	Respond [shape=circle];
+	init->Stable;
+	Stable->Filter [label="recvfrom(A0,newFilterRequest)[1]"];
+	Filter->Respond [label="sendto(A0,itemToBeFiltered)[2]"];
+	Filter->Stable [label="sendto(A0,noMoreItems)[3]"];
+	Respond->Filter [label="recvfrom(A0,ok)[4]"];
+	Respond->Filter [label="recvfrom(A0,remove)[5]"];
+}

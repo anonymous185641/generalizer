@@ -1,0 +1,9 @@
+loopS(
+	seq(
+		A1 -- sendData ->| [1],
+		alt(
+			notSubscribed -> A1 [4],
+			provideService -> A1 [10]
+		)
+	)
+)

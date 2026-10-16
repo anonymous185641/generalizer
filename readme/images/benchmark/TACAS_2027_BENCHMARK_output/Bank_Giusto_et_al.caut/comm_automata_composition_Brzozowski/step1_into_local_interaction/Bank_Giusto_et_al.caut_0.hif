@@ -1,0 +1,17 @@
+loopS(
+	alt(
+		seq(
+			Client -- buy ->| [3],
+			askpay -> Client [4],
+			Client -- infopay ->| [5],
+			alt(
+				cancel -> Client [6],
+				conf -> Client [7]
+			)
+		),
+		seq(
+			Client -- askprice ->| [1],
+			price -> Client [2]
+		)
+	)
+)

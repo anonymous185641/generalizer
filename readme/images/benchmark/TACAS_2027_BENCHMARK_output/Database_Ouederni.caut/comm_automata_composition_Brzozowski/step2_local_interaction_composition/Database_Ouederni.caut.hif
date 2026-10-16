@@ -1,0 +1,7 @@
+loopS(
+	seq(
+		client -- request -> server,
+		server -- result -> client,
+		client -- log -> database
+	)
+)

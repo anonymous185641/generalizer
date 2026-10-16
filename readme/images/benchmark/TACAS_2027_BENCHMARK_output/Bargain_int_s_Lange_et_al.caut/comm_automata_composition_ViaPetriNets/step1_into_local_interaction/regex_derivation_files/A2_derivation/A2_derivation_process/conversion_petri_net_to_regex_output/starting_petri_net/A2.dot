@@ -1,0 +1,15 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p13064 [shape=circle, label="p13064"];
+    p13066 [shape=circle, label="p0\n●"];
+    p13067 [shape=circle, label="p13067"];
+
+    t13063 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A0_info_4"];
+    t13065 [shape=box, width=0.3, height=0.3, label="", xlabel="ε"];
+
+    t13063 -> p13064;
+    p13064 -> t13065;
+    p13066 -> t13063;
+    t13065 -> p13067;
+}

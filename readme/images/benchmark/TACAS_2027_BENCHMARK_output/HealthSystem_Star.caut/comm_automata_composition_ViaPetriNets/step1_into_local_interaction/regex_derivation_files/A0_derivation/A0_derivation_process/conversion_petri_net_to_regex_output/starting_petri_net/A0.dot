@@ -1,0 +1,56 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p90355 [shape=circle, label="p90355"];
+    p90357 [shape=circle, label="p0"];
+    p90359 [shape=circle, label="p90359"];
+    p90362 [shape=circle, label="p90362"];
+    p90364 [shape=circle, label="p1\n●"];
+    p90365 [shape=circle, label="p90365"];
+    p90367 [shape=circle, label="p90367"];
+    p90369 [shape=circle, label="p90369"];
+    p90371 [shape=circle, label="p90371"];
+    p90372 [shape=circle, label="p90372"];
+    p90374 [shape=circle, label="p90374"];
+    p90377 [shape=circle, label="p90377"];
+
+    t90354 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A1_sendData_1"];
+    t90356 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A2_subscribed_2"];
+    t90358 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A2_Ok_5"];
+    t90360 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A3_connect_12"];
+    t90361 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A2_nok_3"];
+    t90363 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A1_notSubscribed_4"];
+    t90366 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A3_logCreated_7"];
+    t90368 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A3_account_6"];
+    t90370 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A3_connectOk_13"];
+    t90373 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A4_fwd_8"];
+    t90375 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A4_fwdOk_9"];
+    t90376 [shape=box, width=0.3, height=0.3, label="", xlabel="ε"];
+
+    t90354 -> p90355;
+    p90355 -> t90356;
+    t90356 -> p90357;
+    t90358 -> p90359;
+    p90359 -> t90360;
+    t90361 -> p90362;
+    p90362 -> t90363;
+    t90363 -> p90364;
+    t90360 -> p90365;
+    p90365 -> t90366;
+    t90360 -> p90367;
+    p90367 -> t90368;
+    t90368 -> p90369;
+    p90369 -> t90370;
+    t90366 -> p90371;
+    p90371 -> t90370;
+    t90370 -> p90372;
+    p90372 -> t90373;
+    t90373 -> p90374;
+    p90374 -> t90375;
+    t90375 -> p90364;
+    p90357 -> t90358;
+    p90357 -> t90361;
+    p90364 -> t90354;
+    p90364 -> t90376;
+    t90376 -> p90377;
+}

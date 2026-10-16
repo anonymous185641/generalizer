@@ -1,0 +1,18 @@
+seq(
+	loopS(
+		seq(
+			A0 -- hag -> A1,
+			A1 -- price -> A0
+		)
+	),
+	alt(
+		seq(
+			A0 -- happy -> A1,
+			A0 -- info -> A2
+		),
+		seq(
+			A0 -- info -> A2,
+			A0 -- happy -> A1
+		)
+	)
+)

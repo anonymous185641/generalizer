@@ -1,0 +1,11 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p95675 [shape=circle, label="p0\n●"];
+    p95677 [shape=circle, label="p95677"];
+
+    t95680 [shape=box, width=0.3, height=0.3, label="", xlabel="(recvfrom_A1_log_8*.ε)"];
+
+    t95680 -> p95677;
+    p95675 -> t95680;
+}

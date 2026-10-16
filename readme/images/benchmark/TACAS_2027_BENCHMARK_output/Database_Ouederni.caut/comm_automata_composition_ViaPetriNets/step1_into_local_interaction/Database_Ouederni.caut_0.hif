@@ -1,0 +1,6 @@
+loopS(
+	seq(
+		request -> server [1],
+		server -- result ->| [2]
+	)
+)

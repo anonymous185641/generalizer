@@ -1,0 +1,9 @@
+loopS(
+	alt(
+		logs -> Database [4],
+		seq(
+			logc -> Database [6],
+			Database -- ackd ->| [5]
+		)
+	)
+)

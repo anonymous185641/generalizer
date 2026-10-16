@@ -1,0 +1,30 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p13028 [shape=circle, label="p13028"];
+    p13030 [shape=circle, label="p0\n●"];
+    p13031 [shape=circle, label="p1\n●"];
+    p13033 [shape=circle, label="p13033"];
+    p13036 [shape=circle, label="p13036"];
+    p13037 [shape=circle, label="p13037"];
+
+    t13027 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A1_hag_1"];
+    t13029 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A1_price_2"];
+    t13032 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A1_happy_3"];
+    t13034 [shape=box, width=0.3, height=0.3, label="", xlabel="ε"];
+    t13035 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A2_info_4"];
+
+    t13027 -> p13028;
+    p13028 -> t13029;
+    t13029 -> p13030;
+    t13029 -> p13031;
+    t13032 -> p13033;
+    p13033 -> t13034;
+    t13035 -> p13036;
+    p13036 -> t13034;
+    p13030 -> t13027;
+    p13030 -> t13032;
+    p13031 -> t13027;
+    p13031 -> t13035;
+    t13034 -> p13037;
+}

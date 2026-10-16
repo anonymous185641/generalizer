@@ -1,0 +1,18 @@
+loopS(
+	seq(
+		A0 -- connect -> A2,
+		coreg(A2)(
+			A2 -- syncAccess -> A0,
+			seq(
+				A2 -- setup -> A1,
+				loopS(
+					A0 -- access -> A1
+				)
+			)
+		),
+		A0 -- logout -> A2,
+		A0 -- syncLogout -> A1,
+		A1 -- log -> A3,
+		A1 -- syncLog -> A0
+	)
+)

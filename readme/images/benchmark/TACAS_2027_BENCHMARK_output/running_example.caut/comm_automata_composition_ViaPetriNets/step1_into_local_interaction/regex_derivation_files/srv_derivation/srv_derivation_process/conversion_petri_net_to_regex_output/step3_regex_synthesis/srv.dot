@@ -1,0 +1,11 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p106757 [shape=circle, label="p0\n●"];
+    p106759 [shape=circle, label="p106759"];
+
+    t106767 [shape=box, width=0.3, height=0.3, label="", xlabel="(sendto_usr_not_1.sendto_dev_cfg_2.(recvfrom_usr_rep_4|sendto_dev_png_5)*.ε)"];
+
+    p106757 -> t106767;
+    t106767 -> p106759;
+}

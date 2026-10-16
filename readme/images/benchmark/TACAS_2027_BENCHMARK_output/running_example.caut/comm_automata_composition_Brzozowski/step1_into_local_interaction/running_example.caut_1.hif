@@ -1,0 +1,39 @@
+seq(
+	loopS(
+		alt(
+			dev -- sta ->| [3],
+			seq(
+				png -> dev [5],
+				dev -- hbt ->| [6]
+			)
+		)
+	),
+	alt(
+		seq(
+			cfg -> dev [2],
+			loopS(
+				alt(
+					dev -- sta ->| [3],
+					seq(
+						png -> dev [5],
+						dev -- hbt ->| [6]
+					)
+				)
+			)
+		),
+		seq(
+			png -> dev [5],
+			cfg -> dev [2],
+			dev -- hbt ->| [6],
+			loopS(
+				alt(
+					dev -- sta ->| [3],
+					seq(
+						png -> dev [5],
+						dev -- hbt ->| [6]
+					)
+				)
+			)
+		)
+	)
+)

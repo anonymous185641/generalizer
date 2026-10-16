@@ -1,0 +1,23 @@
+loopS(
+	seq(
+		sendData -> A0 [1],
+		A0 -- subscribed ->| [2],
+		alt(
+			seq(
+				Ok -> A0 [5],
+				A0 -- connect ->| [12],
+				par(
+					logCreated -> A0 [7],
+					A0 -- account ->| [6]
+				),
+				connectOk -> A0 [13],
+				A0 -- fwd ->| [8],
+				fwdOk -> A0 [9]
+			),
+			seq(
+				nok -> A0 [3],
+				A0 -- notSubscribed ->| [4]
+			)
+		)
+	)
+)

@@ -1,0 +1,20 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	q0 [shape=circle];
+	q1 [shape=circle];
+	q2 [shape=circle];
+	q4 [shape=doublecircle];
+	q3 [shape=circle];
+	qF13530 [shape=circle];
+	init->q0;
+	q0->q1 [label="recvfrom_a_int_1"];
+	q1->q2 [label="recvfrom_a_bool_2"];
+	q2->q4 [label="sendto_a_yes_3"];
+	q2->q4 [label="sendto_a_no_4"];
+	q1->q3 [label="sendto_a_yes_3"];
+	q1->q3 [label="sendto_a_no_4"];
+	q3->q4 [label="recvfrom_a_bool_2"];
+	q4->qF13530 [label="Epsilon"];
+}

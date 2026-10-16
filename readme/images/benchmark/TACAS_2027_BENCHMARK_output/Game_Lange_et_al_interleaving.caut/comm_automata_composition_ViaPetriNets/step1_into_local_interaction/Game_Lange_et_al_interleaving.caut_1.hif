@@ -1,0 +1,12 @@
+loopS(
+	seq(
+		alt(
+			seq(
+				bwin -> A1 [1],
+				A1 -- close ->| [6]
+			),
+			blose -> A1 [7]
+		),
+		A1 -- sig ->| [3]
+	)
+)

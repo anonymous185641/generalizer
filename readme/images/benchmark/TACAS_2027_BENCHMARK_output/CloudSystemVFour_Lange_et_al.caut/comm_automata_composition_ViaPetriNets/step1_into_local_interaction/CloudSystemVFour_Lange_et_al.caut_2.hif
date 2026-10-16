@@ -1,0 +1,8 @@
+loopS(
+	seq(
+		connect -> A2 [1],
+		A2 -- setup ->| [7],
+		A2 -- syncAccess ->| [2],
+		logout -> A2 [4]
+	)
+)

@@ -1,0 +1,15 @@
+loopS(
+	seq(
+		newFilterRequest -> A1 [1],
+		loopS(
+			seq(
+				A1 -- itemToBeFiltered ->| [3],
+				par(
+					Ok -> A1 [5],
+					remove -> A1 [4]
+				)
+			)
+		),
+		A1 -- noMoreItems ->| [2]
+	)
+)

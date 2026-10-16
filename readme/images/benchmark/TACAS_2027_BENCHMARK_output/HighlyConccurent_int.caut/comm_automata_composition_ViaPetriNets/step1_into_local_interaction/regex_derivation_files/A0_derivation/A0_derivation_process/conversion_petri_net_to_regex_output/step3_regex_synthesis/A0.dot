@@ -1,0 +1,33 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p84464 [shape=circle, label="p0\n●"];
+    p84465 [shape=circle, label="p1\n●"];
+    p84466 [shape=circle, label="p2\n●"];
+    p84467 [shape=circle, label="p3\n●"];
+    p84468 [shape=circle, label="p4\n●"];
+    p84470 [shape=circle, label="p7\n●"];
+    p84471 [shape=circle, label="p9\n●"];
+    p84472 [shape=circle, label="p10\n●"];
+    p84473 [shape=circle, label="p11\n●"];
+    p84474 [shape=circle, label="p12\n●"];
+    p84475 [shape=circle, label="p15\n●"];
+    p84476 [shape=circle, label="p17\n●"];
+    p84477 [shape=circle, label="p84477"];
+
+    t84525 [shape=box, width=0.3, height=0.3, label="", xlabel="((sendto_A1_m1_1|((sendto_A1_m10_10&sendto_A1_m8_8&sendto_A1_m9_9&sendto_A1_m7_7)|((sendto_A1_m3_3&sendto_A1_m2_2)|(sendto_A1_m6_6&sendto_A1_m4_4&sendto_A1_m5_5)))).ε)"];
+
+    p84476 -> t84525;
+    p84472 -> t84525;
+    p84473 -> t84525;
+    p84474 -> t84525;
+    t84525 -> p84477;
+    p84468 -> t84525;
+    p84465 -> t84525;
+    p84471 -> t84525;
+    p84475 -> t84525;
+    p84467 -> t84525;
+    p84470 -> t84525;
+    p84466 -> t84525;
+    p84464 -> t84525;
+}

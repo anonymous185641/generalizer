@@ -1,0 +1,15 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	q0 [shape=circle];
+	q1 [shape=circle];
+	q2 [shape=doublecircle];
+	qF106750 [shape=circle];
+	init->q0;
+	q0->q1 [label="sendto_usr_not_1"];
+	q1->q2 [label="sendto_dev_cfg_2"];
+	q2->q2 [label="recvfrom_usr_rep_4"];
+	q2->q2 [label="sendto_dev_png_5"];
+	q2->qF106750 [label="Epsilon"];
+}

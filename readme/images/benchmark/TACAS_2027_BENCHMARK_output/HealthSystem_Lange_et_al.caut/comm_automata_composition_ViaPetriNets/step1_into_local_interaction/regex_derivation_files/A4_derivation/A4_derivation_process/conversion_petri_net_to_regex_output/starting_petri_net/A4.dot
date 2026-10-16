@@ -1,0 +1,22 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p17109 [shape=circle, label="p17109"];
+    p17111 [shape=circle, label="p17111"];
+    p17113 [shape=circle, label="p0\n●"];
+    p17115 [shape=circle, label="p17115"];
+
+    t17108 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A0_fwd_8"];
+    t17110 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A0_fwdOk_9"];
+    t17112 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A5_helpReq_11"];
+    t17114 [shape=box, width=0.3, height=0.3, label="", xlabel="ε"];
+
+    t17108 -> p17109;
+    p17109 -> t17110;
+    t17110 -> p17111;
+    p17111 -> t17112;
+    t17112 -> p17113;
+    p17113 -> t17108;
+    p17113 -> t17114;
+    t17114 -> p17115;
+}

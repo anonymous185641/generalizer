@@ -1,0 +1,26 @@
+alt(
+	seq(
+		int -> b2 [3],
+		int -> b2 [4],
+		alt(
+			b2 -- quit ->| [8],
+			seq(
+				b2 -- ok ->| [5],
+				b2 -- string ->| [6],
+				date -> b2 [7]
+			)
+		)
+	),
+	seq(
+		int -> b2 [4],
+		int -> b2 [3],
+		alt(
+			b2 -- quit ->| [8],
+			seq(
+				b2 -- ok ->| [5],
+				b2 -- string ->| [6],
+				date -> b2 [7]
+			)
+		)
+	)
+)

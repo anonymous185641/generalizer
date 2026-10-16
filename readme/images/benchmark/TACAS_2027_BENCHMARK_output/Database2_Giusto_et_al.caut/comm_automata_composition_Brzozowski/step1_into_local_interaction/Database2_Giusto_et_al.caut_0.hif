@@ -1,0 +1,8 @@
+loopS(
+	seq(
+		req -> Server [1],
+		Server -- res ->| [2],
+		acks -> Server [3],
+		Server -- logs ->| [4]
+	)
+)

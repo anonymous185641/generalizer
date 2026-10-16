@@ -1,0 +1,15 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	bob0 [shape=doublecircle];
+	bob1 [shape=circle];
+	bob2 [shape=circle];
+	qF12062 [shape=circle];
+	init->bob0;
+	bob0->bob1 [label="recvfrom_A0_bwin_1"];
+	bob1->bob2 [label="sendto_A2_close_6"];
+	bob0->bob2 [label="recvfrom_A2_blose_7"];
+	bob2->bob0 [label="sendto_A0_sig_3"];
+	bob0->qF12062 [label="Epsilon"];
+}

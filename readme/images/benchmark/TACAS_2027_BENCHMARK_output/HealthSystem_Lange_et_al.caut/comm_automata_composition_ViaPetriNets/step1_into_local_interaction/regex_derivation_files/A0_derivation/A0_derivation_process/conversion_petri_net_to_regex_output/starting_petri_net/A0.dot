@@ -1,0 +1,45 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p17041 [shape=circle, label="p17041"];
+    p17043 [shape=circle, label="p0"];
+    p17045 [shape=circle, label="p17045"];
+    p17047 [shape=circle, label="p1\n●"];
+    p17049 [shape=circle, label="p17049"];
+    p17051 [shape=circle, label="p17051"];
+    p17053 [shape=circle, label="p17053"];
+    p17055 [shape=circle, label="p17055"];
+    p17058 [shape=circle, label="p17058"];
+
+    t17040 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A1_sendData_1"];
+    t17042 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A2_subscribed_2"];
+    t17044 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A2_nok_3"];
+    t17046 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A1_notSubscribed_4"];
+    t17048 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A2_ok_5"];
+    t17050 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A3_account_6"];
+    t17052 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A3_logCreated_7"];
+    t17054 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A4_fwd_8"];
+    t17056 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A4_fwdOk_9"];
+    t17057 [shape=box, width=0.3, height=0.3, label="", xlabel="ε"];
+
+    t17040 -> p17041;
+    p17041 -> t17042;
+    t17042 -> p17043;
+    t17044 -> p17045;
+    p17045 -> t17046;
+    t17046 -> p17047;
+    t17048 -> p17049;
+    p17049 -> t17050;
+    t17050 -> p17051;
+    p17051 -> t17052;
+    t17052 -> p17053;
+    p17053 -> t17054;
+    t17054 -> p17055;
+    p17055 -> t17056;
+    t17056 -> p17047;
+    p17043 -> t17044;
+    p17043 -> t17048;
+    p17047 -> t17040;
+    p17047 -> t17057;
+    t17057 -> p17058;
+}

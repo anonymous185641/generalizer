@@ -1,0 +1,19 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	q0 [shape=circle];
+	q1 [shape=circle];
+	q2 [shape=circle];
+	q4 [shape=doublecircle];
+	q3 [shape=circle];
+	qF13026 [shape=circle];
+	init->q0;
+	q0->q1 [label="sendto_A1_hag_1"];
+	q1->q0 [label="recvfrom_A1_price_2"];
+	q0->q2 [label="sendto_A1_happy_3"];
+	q2->q4 [label="sendto_A2_info_4"];
+	q0->q3 [label="sendto_A2_info_4"];
+	q3->q4 [label="sendto_A1_happy_3"];
+	q4->qF13026 [label="Epsilon"];
+}

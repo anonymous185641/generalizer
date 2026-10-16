@@ -1,0 +1,40 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p97298 [shape=circle, label="p97298"];
+    p97300 [shape=circle, label="p1\n●"];
+    p97302 [shape=circle, label="p97302"];
+    p97304 [shape=circle, label="p0"];
+    p97306 [shape=circle, label="p97306"];
+    p97309 [shape=circle, label="p97309"];
+    p97312 [shape=circle, label="p97312"];
+
+    t97297 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_Client_askprice_1"];
+    t97299 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_Client_price_2"];
+    t97301 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_Client_buy_3"];
+    t97303 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_Bank_transaction_8"];
+    t97305 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_Bank_auth_9"];
+    t97307 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_Client_conf_7"];
+    t97308 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_Bank_refusal_10"];
+    t97310 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_Client_cancel_6"];
+    t97311 [shape=box, width=0.3, height=0.3, label="", xlabel="ε"];
+
+    t97297 -> p97298;
+    p97298 -> t97299;
+    t97299 -> p97300;
+    t97301 -> p97302;
+    p97302 -> t97303;
+    t97303 -> p97304;
+    t97305 -> p97306;
+    p97306 -> t97307;
+    t97307 -> p97300;
+    t97308 -> p97309;
+    p97309 -> t97310;
+    t97310 -> p97300;
+    p97304 -> t97305;
+    p97304 -> t97308;
+    p97300 -> t97297;
+    p97300 -> t97301;
+    p97300 -> t97311;
+    t97311 -> p97312;
+}

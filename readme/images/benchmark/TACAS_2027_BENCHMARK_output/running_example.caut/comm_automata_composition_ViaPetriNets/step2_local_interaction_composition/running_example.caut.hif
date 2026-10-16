@@ -1,0 +1,16 @@
+coreg(dev)(
+	srv -- not -> usr,
+	srv -- cfg -> dev,
+	loopS(
+		alt(
+			seq(
+				dev -- sta -> usr,
+				usr -- rep -> srv
+			),
+			seq(
+				srv -- png -> dev,
+				dev -- hbt -> usr
+			)
+		)
+	)
+)

@@ -1,0 +1,21 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p99516 [shape=circle, label="p99516"];
+    p99518 [shape=circle, label="p0\n●"];
+    p99521 [shape=circle, label="p99521"];
+
+    t99515 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_Client_logc_6"];
+    t99517 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_Client_ackd_5"];
+    t99519 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_Server_logs_4"];
+    t99520 [shape=box, width=0.3, height=0.3, label="", xlabel="ε"];
+
+    t99515 -> p99516;
+    p99516 -> t99517;
+    t99517 -> p99518;
+    t99519 -> p99518;
+    p99518 -> t99515;
+    p99518 -> t99519;
+    p99518 -> t99520;
+    t99520 -> p99521;
+}

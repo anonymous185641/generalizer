@@ -1,0 +1,26 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p99473 [shape=circle, label="p99473"];
+    p99475 [shape=circle, label="p99475"];
+    p99477 [shape=circle, label="p99477"];
+    p99479 [shape=circle, label="p0\n●"];
+    p99481 [shape=circle, label="p99481"];
+
+    t99472 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_Client_req_1"];
+    t99474 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_Client_res_2"];
+    t99476 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_Client_acks_3"];
+    t99478 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_Database_logs_4"];
+    t99480 [shape=box, width=0.3, height=0.3, label="", xlabel="ε"];
+
+    t99472 -> p99473;
+    p99473 -> t99474;
+    t99474 -> p99475;
+    p99475 -> t99476;
+    t99476 -> p99477;
+    p99477 -> t99478;
+    t99478 -> p99479;
+    p99479 -> t99472;
+    p99479 -> t99480;
+    t99480 -> p99481;
+}

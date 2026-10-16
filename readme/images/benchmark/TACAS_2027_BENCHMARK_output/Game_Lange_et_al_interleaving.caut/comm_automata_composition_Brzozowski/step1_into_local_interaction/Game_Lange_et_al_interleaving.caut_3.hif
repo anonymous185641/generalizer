@@ -1,0 +1,6 @@
+loopS(
+	seq(
+		busy -> A3 [8],
+		free -> A3 [5]
+	)
+)

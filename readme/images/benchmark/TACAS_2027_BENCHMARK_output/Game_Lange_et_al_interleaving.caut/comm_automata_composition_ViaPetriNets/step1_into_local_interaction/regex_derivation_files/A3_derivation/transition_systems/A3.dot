@@ -1,0 +1,12 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	dave0 [shape=doublecircle];
+	dave1 [shape=circle];
+	qF12103 [shape=circle];
+	init->dave0;
+	dave0->dave1 [label="recvfrom_A2_busy_8"];
+	dave1->dave0 [label="recvfrom_A0_free_5"];
+	dave0->qF12103 [label="Epsilon"];
+}

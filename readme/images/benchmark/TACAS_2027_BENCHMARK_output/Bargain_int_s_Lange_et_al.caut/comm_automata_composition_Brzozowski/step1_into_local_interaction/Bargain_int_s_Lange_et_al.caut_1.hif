@@ -1,0 +1,9 @@
+seq(
+	loopS(
+		seq(
+			hag -> A1 [1],
+			A1 -- price ->| [2]
+		)
+	),
+	happy -> A1 [3]
+)

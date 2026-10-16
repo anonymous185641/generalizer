@@ -1,0 +1,13 @@
+loopS(
+	alt(
+		seq(
+			Client -- logc ->| [6],
+			ackd -> Client [5]
+		),
+		seq(
+			Client -- req ->| [1],
+			res -> Client [2],
+			Client -- acks ->| [3]
+		)
+	)
+)

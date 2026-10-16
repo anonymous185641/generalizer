@@ -1,0 +1,11 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p97300 [shape=circle, label="p1\n●"];
+    p97312 [shape=circle, label="p97312"];
+
+    t97367 [shape=box, width=0.3, height=0.3, label="", xlabel="(((recvfrom_Client_askprice_1.sendto_Client_price_2)|(recvfrom_Client_buy_3.sendto_Bank_transaction_8.((recvfrom_Bank_auth_9.sendto_Client_conf_7)|(recvfrom_Bank_refusal_10.sendto_Client_cancel_6))))*.ε)"];
+
+    t97367 -> p97312;
+    p97300 -> t97367;
+}

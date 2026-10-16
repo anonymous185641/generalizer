@@ -1,0 +1,20 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	alice0 [shape=doublecircle];
+	alice1 [shape=circle];
+	alice2 [shape=circle];
+	alice3 [shape=circle];
+	alice4 [shape=circle];
+	qF12040 [shape=circle];
+	init->alice0;
+	alice0->alice1 [label="sendto_A1_bwin_1"];
+	alice0->alice1 [label="sendto_A2_cwin_2"];
+	alice1->alice2 [label="recvfrom_A1_sig_3"];
+	alice1->alice3 [label="recvfrom_A2_msg_4"];
+	alice2->alice4 [label="recvfrom_A2_msg_4"];
+	alice3->alice4 [label="recvfrom_A1_sig_3"];
+	alice4->alice0 [label="sendto_A3_free_5"];
+	alice0->qF12040 [label="Epsilon"];
+}

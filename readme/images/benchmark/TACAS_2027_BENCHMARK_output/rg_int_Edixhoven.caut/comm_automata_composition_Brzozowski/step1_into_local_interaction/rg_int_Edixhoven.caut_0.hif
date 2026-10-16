@@ -1,0 +1,19 @@
+seq(
+	a -- int ->| [1],
+	alt(
+		seq(
+			alt(
+				yes -> a [3],
+				no -> a [4]
+			),
+			a -- bool ->| [2]
+		),
+		seq(
+			a -- bool ->| [2],
+			alt(
+				yes -> a [3],
+				no -> a [4]
+			)
+		)
+	)
+)

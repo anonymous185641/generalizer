@@ -1,0 +1,12 @@
+loopS(
+	seq(
+		A0 -- connect ->| [1],
+		syncAccess -> A0 [2],
+		loopS(
+			A0 -- access ->| [3]
+		),
+		A0 -- logout ->| [4],
+		A0 -- syncLogout ->| [5],
+		syncLog -> A0 [6]
+	)
+)

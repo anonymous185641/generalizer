@@ -1,0 +1,25 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	q0 [shape=circle];
+	q1 [shape=circle];
+	q2 [shape=circle];
+	q4 [shape=circle];
+	q3 [shape=circle];
+	q7 [shape=doublecircle];
+	q5 [shape=circle];
+	q6 [shape=circle];
+	qF11285 [shape=circle];
+	init->q0;
+	q0->q1 [label="recvfrom_b1_string_1"];
+	q1->q2 [label="sendto_b2_int_4"];
+	q2->q4 [label="sendto_b1_int_2"];
+	q1->q3 [label="sendto_b1_int_2"];
+	q3->q4 [label="sendto_b2_int_4"];
+	q4->q7 [label="recvfrom_b2_quit_8"];
+	q4->q5 [label="recvfrom_b2_ok_5"];
+	q5->q6 [label="recvfrom_b2_string_6"];
+	q6->q7 [label="sendto_b2_date_7"];
+	q7->qF11285 [label="Epsilon"];
+}

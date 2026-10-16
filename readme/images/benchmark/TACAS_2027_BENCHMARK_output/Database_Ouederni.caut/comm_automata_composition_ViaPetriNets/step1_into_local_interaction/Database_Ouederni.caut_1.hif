@@ -1,0 +1,7 @@
+loopS(
+	seq(
+		client -- request ->| [1],
+		result -> client [2],
+		client -- log ->| [3]
+	)
+)

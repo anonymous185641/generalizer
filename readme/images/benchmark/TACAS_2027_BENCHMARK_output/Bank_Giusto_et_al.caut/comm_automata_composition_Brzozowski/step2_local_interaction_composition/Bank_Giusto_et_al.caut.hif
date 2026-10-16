@@ -1,0 +1,25 @@
+loopS(
+	alt(
+		∅,
+		seq(
+			Client -- askprice -> Seller,
+			Seller -- price -> Client
+		),
+		seq(
+			Client -- buy -> Seller,
+			Seller -- transaction -> Bank,
+			Bank -- askpay -> Client,
+			Client -- infopay -> Bank,
+			alt(
+				seq(
+					Bank -- auth -> Seller,
+					Seller -- conf -> Client
+				),
+				seq(
+					Bank -- refusal -> Seller,
+					Seller -- cancel -> Client
+				)
+			)
+		)
+	)
+)

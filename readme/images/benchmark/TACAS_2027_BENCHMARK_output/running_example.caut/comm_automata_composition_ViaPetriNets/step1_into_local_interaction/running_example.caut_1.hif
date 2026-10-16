@@ -1,0 +1,12 @@
+par(
+	loopS(
+		alt(
+			seq(
+				png -> dev [5],
+				dev -- hbt ->| [6]
+			),
+			dev -- sta ->| [3]
+		)
+	),
+	cfg -> dev [2]
+)

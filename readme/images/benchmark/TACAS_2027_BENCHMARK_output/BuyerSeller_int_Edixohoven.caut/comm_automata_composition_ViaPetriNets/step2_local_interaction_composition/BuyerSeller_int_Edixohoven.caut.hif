@@ -1,0 +1,18 @@
+seq(
+	b1 -- string -> s,
+	coreg(s)(
+		s -- int -> b1,
+		par(
+			b1 -- int -> b2,
+			s -- int -> b2
+		)
+	),
+	alt(
+		b2 -- quit -> s,
+		seq(
+			b2 -- ok -> s,
+			b2 -- string -> s,
+			s -- date -> b2
+		)
+	)
+)

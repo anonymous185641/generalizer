@@ -1,0 +1,28 @@
+digraph PetriNet {
+    rankdir=LR;
+
+    p2843 [shape=circle, label="p1"];
+    p2845 [shape=circle, label="p0"];
+    p2847 [shape=circle, label="p2\n●"];
+    p2851 [shape=circle, label="p2851"];
+
+    t2842 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A1_newFilterRequest_1"];
+    t2844 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A1_itemToBeFiltered_2"];
+    t2846 [shape=box, width=0.3, height=0.3, label="", xlabel="recvfrom_A1_noMoreItems_3"];
+    t2848 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A1_ok_4"];
+    t2849 [shape=box, width=0.3, height=0.3, label="", xlabel="sendto_A1_remove_5"];
+    t2850 [shape=box, width=0.3, height=0.3, label="", xlabel="ε"];
+
+    t2842 -> p2843;
+    t2844 -> p2845;
+    t2846 -> p2847;
+    t2848 -> p2843;
+    t2849 -> p2843;
+    p2845 -> t2848;
+    p2845 -> t2849;
+    p2843 -> t2844;
+    p2843 -> t2846;
+    p2847 -> t2842;
+    p2847 -> t2850;
+    t2850 -> p2851;
+}

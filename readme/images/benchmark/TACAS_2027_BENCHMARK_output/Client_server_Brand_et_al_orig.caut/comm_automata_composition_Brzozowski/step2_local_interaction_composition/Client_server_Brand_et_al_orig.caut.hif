@@ -1,0 +1,12 @@
+loopS(
+	alt(
+		seq(
+			User -- REQ -> Server,
+			User -- DONE -> Server
+		),
+		seq(
+			User -- ALARM -> Server,
+			Server -- ACK -> User
+		)
+	)
+)

@@ -1,0 +1,10 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	dave0 [shape=doublecircle];
+	dave1 [shape=circle];
+	init->dave0;
+	dave0->dave1 [label="recvfrom(A2,busy)[8]"];
+	dave1->dave0 [label="recvfrom(A0,free)[5]"];
+}

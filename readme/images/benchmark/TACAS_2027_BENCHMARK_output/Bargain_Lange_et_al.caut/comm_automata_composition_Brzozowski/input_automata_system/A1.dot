@@ -1,0 +1,12 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	q0 [shape=circle];
+	q1 [shape=circle];
+	q2 [shape=doublecircle];
+	init->q0;
+	q0->q1 [label="recvfrom(A0,hag)[1]"];
+	q1->q0 [label="sendto(A0,price)[2]"];
+	q0->q2 [label="recvfrom(A0,happy)[3]"];
+}

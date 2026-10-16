@@ -1,0 +1,13 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	ready [shape=doublecircle];
+	wait [shape=circle];
+	register [shape=circle];
+	init->ready;
+	ready->wait [label="sendto(Server,REQ)[1]"];
+	wait->ready [label="sendto(Server,DONE)[3]"];
+	ready->register [label="sendto(Server,ALARM)[4]"];
+	register->ready [label="recvfrom(Server,ACK)[2]"];
+}

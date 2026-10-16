@@ -1,0 +1,22 @@
+digraph G {
+compound=true;
+rankdir=lr;
+	init [shape=point];
+	carol0 [shape=doublecircle];
+	carol3 [shape=circle];
+	carol2 [shape=circle];
+	carol1 [shape=circle];
+	carol4 [shape=circle];
+	carol5 [shape=circle];
+	init->carol0;
+	carol0->carol3 [label="recvfrom(A1,close)[6]"];
+	carol0->carol2 [label="sendto(A3,busy)[8]"];
+	carol0->carol1 [label="recvfrom(A0,cwin)[2]"];
+	carol1->carol4 [label="sendto(A3,busy)[8]"];
+	carol1->carol3 [label="sendto(A1,blose)[7]"];
+	carol2->carol5 [label="recvfrom(A1,close)[6]"];
+	carol2->carol4 [label="recvfrom(A0,cwin)[2]"];
+	carol3->carol5 [label="sendto(A3,busy)[8]"];
+	carol4->carol5 [label="sendto(A1,blose)[7]"];
+	carol5->carol0 [label="sendto(A0,msg)[4]"];
+}
