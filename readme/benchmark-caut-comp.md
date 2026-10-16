@@ -32,6 +32,15 @@ Anti-unification is done modulo the following equations using variants:
 <img src="images/benchmark/eqn.png" alt="Resulting global interaction" width="600"/>
 
 
+The execution of the benchmark is done with the following command:
+
+```
+  $ generalizer caut_composition_benchmark BENCHMARK_COMM_AUTOMATA
+```
+
+Where `BENCHMARK_COMM_AUTOMATA` is the path folder containing the benchmark. We 
+provide the benchmark in the following folder [BENCHMARK_COMM_AUTOMATA](../BENCHMARK_COMM_AUTOMATA).
+
 We then provide the picture associated with the execution of each of the use case of the benchmark.
 
 [Health System *](use_cases_pics/HealthSystem-Star.md)
