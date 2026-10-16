@@ -34,6 +34,6 @@ Anti-unification is done modulo the following equations using variants:
 
 We then provide the picture associated with the execution of each of the use case of the benchmark.
 
-[Health System $^*$](use_cases_pics/HealthSystem-Star.md)
+[Health System *](use_cases_pics/HealthSystem-Star.md)
 
 TO DO: remainder of use cases
