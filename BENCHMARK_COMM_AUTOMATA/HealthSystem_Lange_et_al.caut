@@ -1,0 +1,56 @@
+@automata{A0;A1;A2;A3;A4;A5}
+@messages{account;fwd;fwdOk;helpReq;logCreated;nok;notSubscribed;ok;provideService;sendData;subscribed}
+@gates{1;2;3;4;5;6;7;8;9;10;11}
+
+.automaton A0
+s1 recvfrom(A1,sendData)[1] s2
+s2 sendto(A2,subscribed)[2] s3
+s3 recvfrom(A2,nok)[3] s6
+s6 sendto(A1,notSubscribed)[4] s1
+s3 recvfrom(A2,ok)[5] s4
+s4 sendto(A3,account)[6] s5
+s5 recvfrom(A3,logCreated)[7] s7
+s7 sendto(A4,fwd)[8] s8
+s8 recvfrom(A4,fwdOk)[9] s1
+.initial state {s1}
+.final states {s1}
+.end
+
+.automaton A1
+s1 sendto(A0,sendData)[1] s2
+s2 recvfrom(A0,notSubscribed)[4] s1
+s2 recvfrom(A5,provideService)[10] s1
+.initial state {s1}
+.final states {s1}
+.end
+
+.automaton A2
+s1 recvfrom(A0,subscribed)[2] s2
+s2 sendto(A0,nok)[3] s1
+s2 sendto(A0,ok)[5] s1
+.initial state {s1}
+.final states {s1}
+.end
+
+.automaton A3
+s1 recvfrom(A0,account)[6] s2
+s2 sendto(A0,logCreated)[7] s1
+.initial state {s1}
+.final states {s1}
+.end
+
+.automaton A4
+s1 recvfrom(A0,fwd)[8] s2
+s2 sendto(A0,fwdOk)[9] s3
+s3 sendto(A5,helpReq)[11] s1
+.initial state {s1}
+.final states {s1}
+.end
+
+.automaton A5
+s1 recvfrom(A4,helpReq)[11] s2
+s2 sendto(A1,provideService)[10] s1
+.initial state {s1}
+.final states {s1}
+.end
+

@@ -1,0 +1,27 @@
+@automata{A0;A1}
+@messages{newFilterRequest;noMoreItems;itemToBeFiltered;remove;Ok}
+@gates{1;2;3;4;5}
+
+.automaton A0
+q0 sendto(A1,newFilterRequest)[1] q1
+q1 recvfrom(A1,noMoreItems)[2] q0
+q1 recvfrom(A1,itemToBeFiltered)[3] q2
+q2 sendto(A1,Ok)[5] q3
+q2 sendto(A1,remove)[4] q4
+q3 sendto(A1,remove)[4] q1
+q4 sendto(A1,Ok)[5] q1
+.initial state {q0}
+.final states {q0}
+.end
+
+.automaton A1
+q0 recvfrom(A0,newFilterRequest)[1] q1
+q1 sendto(A0,noMoreItems)[2] q0
+q1 sendto(A0,itemToBeFiltered)[3] q2
+q2 recvfrom(A0,Ok)[5] q3
+q2 recvfrom(A0,remove)[4] q4
+q3 recvfrom(A0,remove)[4] q1
+q4 recvfrom(A0,Ok)[5] q1
+.initial state {q0}
+.final states {q0}
+.end

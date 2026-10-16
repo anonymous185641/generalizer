@@ -1,0 +1,27 @@
+@automata{A0;A1;A2}
+@messages{hag;happy;info;price}
+@gates{1;2;3;4}
+
+.automaton A0
+q0 sendto(A1,hag)[1] q1
+q1 recvfrom(A1,price)[2] q0
+q0 sendto(A1,happy)[3] q2
+q2 sendto(A2,info)[4] q3
+.initial state {q0}
+.final states {q3}
+.end
+
+.automaton A1
+q0 recvfrom(A0,hag)[1] q1
+q1 sendto(A0,price)[2] q0
+q0 recvfrom(A0,happy)[3] q2
+.initial state {q0}
+.final states {q2}
+.end
+
+.automaton A2
+q0 recvfrom(A0,info)[4] q1
+.initial state {q0}
+.final states {q1}
+.end
+

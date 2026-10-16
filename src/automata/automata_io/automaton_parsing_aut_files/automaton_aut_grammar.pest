@@ -1,0 +1,45 @@
+WHITESPACE = _{ " " | "\t" | "\r" }
+NEWLINE = _{ "\r\n" | "\n" }
+END_FILE = _{ " " | "\r\n" | "\n" | "\t" | "\r" }
+
+STRING = @{ LETTER ~ (LETTER | ASCII_DIGIT | "_" | "(" | ")" | "," | "[" | "]")* }
+
+END = _{ ".end" }
+
+
+STATE_NAME = { STRING }
+
+MESSAGE = {STRING}
+
+AUTOMATON_NAME = {STRING}
+
+STATES = { "{" ~WHITESPACE*~ STATE_NAME~WHITESPACE* ~ (";"~WHITESPACE* ~ STATE_NAME)* ~WHITESPACE*~ "}" }
+
+TRANSITION = {STRING}
+
+DCL_GRAPH_TYPE = { ".automaton" ~ WHITESPACE* ~ AUTOMATON_NAME? }
+DCL_PATH  = { STATE_NAME ~ TRANSITION  ~ STATE_NAME }
+DCL_INITIAL_STATE = { ".initial state" ~ WHITESPACE* ~ STATES }
+DCL_FINAL_STATES = { ".final states" ~ WHITESPACE* ~ STATES }
+
+AUTOMATON = {
+             DCL_GRAPH_TYPE
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ DCL_PATH  ~ (NEWLINE ~ DCL_PATH)*
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ DCL_INITIAL_STATE
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ DCL_FINAL_STATES
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ END
+           }
+
+PEST_FILE = _{
+            SOI
+            ~ WHITESPACE* ~ NEWLINE? ~ WHITESPACE*
+            ~ AUTOMATON
+            ~ WHITESPACE* ~ NEWLINE? ~ WHITESPACE*
+            ~ END_FILE*
+            ~ EOI}
+
+

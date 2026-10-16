@@ -1,0 +1,30 @@
+@automata{Server;Client;Database}
+@messages{req;res;ackd;acks;logc;logs}
+@gates{1;2;3;4;5;6}
+
+.automaton Server
+q0 recvfrom(Client,req)[1] q1
+q1 sendto(Client,res)[2] q2
+q2 recvfrom(Client,acks)[3] q3
+q3 sendto(Database,logs)[4] q0
+.initial state {q0}
+.final states {q0}
+.end
+
+.automaton Client
+q0 sendto(Server,req)[1] q1
+q1 recvfrom(Server,res)[2] q2
+q2 sendto(Server,acks)[3] q0
+q3 recvfrom(Database,ackd)[5] q0
+q0 sendto(Database,logc)[6] q3
+.initial state {q0}
+.final states {q0}
+.end
+
+.automaton Database
+q0 recvfrom(Client,logc)[6] q1
+q1 sendto(Client,ackd)[5] q0
+q0 recvfrom(Server,logs)[4] q0
+.initial state {q0}
+.final states {q0}
+.end

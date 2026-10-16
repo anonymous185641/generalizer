@@ -1,0 +1,386 @@
+
+
+
+
+name: cimit
+version: "0.0.0"
+author: Joel Nguetoum
+about: Interaction and Communicating automata composition toolkit
+subcommands:
+  - lgg:
+      about: Find lgg solutions of an anti-unification problem
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - file:
+            required: true
+            index: 1
+            help: File containing the signature and an anti-unification problem
+        - verbose:
+            long: verbose
+            short: v
+            help: Print the computation history of lggs
+        - dot:
+            long: dot
+            short: d
+            help: Print the computation history of lggs in a dot file together with an image
+        - alpuente:
+            long: alpuente
+            short: a
+            help: Use the computation rules of the work of Alpuente et al.
+  - sclgg:
+      about: Find lgg solutions of a constrained anti-unification problem
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - file:
+            required: true
+            index: 1
+            help: File containing the signature and a constrained anti-unification problem
+        - verbose:
+            long: verbose
+            short: v
+            help: Print the computation history of clggs
+        - dot:
+            long: dot
+            short: d
+            help: Print the computation history of lggs in a dot file together with an image
+        - alpuente:
+            long: alpuente
+            short: a
+            help: Use the computation rules of the work of Alpuente et al.
+        - greedyfail:
+            long: greedyfail
+            short: f
+            help: Use the rule GreedySolveFail instead of SolveFail
+  - compose:
+      about: Composition of two interaction models
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - hsf:
+            required: true
+            index: 1
+            help: hsf file
+        - hif1:
+            required: true
+            index: 2
+            help: hif file
+        - hif2:
+            required: true
+            index: 3
+            help: hif file
+        - variant:
+            long: variant
+            short: v
+            help: Use the Variant rule for the computation of the special constant-preserving anti-unification.
+        - loggers:
+            long: loggers
+            short: l
+            help: Generate log picture describing the process of special constant-preserving anti-unification.
+        - S:
+            long: S
+            short: S
+            help: Syntactic Generalization
+        - A:
+            long: A
+            short: A
+            help: Generalization modulo associativity
+        - C:
+            long: C
+            short: C
+            help: Generalization modulo commutativity
+        - U:
+            long: U
+            short: U
+            help: Generalization modulo unit element
+        - AC:
+            long: AC
+            help: Generalization modulo associativity and commutativity
+        - AU:
+            long: AU
+            help: Generalization modulo associativity and unit
+        - CU:
+            long: CU
+            help: Generalization modulo commutativity and unit
+        - ACU:
+            long: ACU
+            help: Generalization modulo associativity,commutativity and unit
+      groups:
+        - name: exclusive_flags
+          args:
+            - S
+            - A
+            - C
+            - U
+            - AC
+            - AU
+            - CU
+            - ACU
+          multiple: false
+  - parse_traces:
+      about: Trace parsing
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - hsf:
+            required: true
+            index: 1
+            help: Trace file
+        - htf:
+            required: true
+            index: 2
+            help: Trace file
+  - regex_inf:
+      about: Regular expression inference from positive examples
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - text_input:
+            required: true
+            index: 1
+            help: Give a text input
+        - separator:
+            long: separator
+            short: s
+            value_name: SEPARATOR
+            takes_value: true
+            help: Separator between alphabet symbols in the input file. Default value is nothing.
+  - ktssi:
+      about: Finite automaton learning from postive examples using KTSSI
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - k:
+            required: true
+            index: 1
+            help: Integer value for the KTSSI parameter
+        - text_input:
+            required: true
+            index: 2
+            help: Give a text input
+        - separator:
+            long: separator
+            short: s
+            value_name: SEPARATOR
+            takes_value: true
+            help: Separator between alphabet symbols in the input file. Default value is nothing.
+  - cfsm_composition:
+      about: Composition of a system of communicating automata into a global interaction model
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - file:
+            required: true
+            index: 1
+            help: File of the communicating finite state machine in the STG format (.g or .out)
+  - sync_product:
+      about: Synchronous product of a system of communicating automata
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - file:
+            required: true
+            index: 1
+            help: File of the communicating automatas in the .caut format
+  - caut_composition:
+      about: Composition of a system of communicating automata into a global interaction model
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - file:
+            required: true
+            index: 1
+            help: File of the system of concurrent automata in tha .caut format
+        - brzozowski:
+            long: brzozowski
+            short: b
+            help: Use the Brzozowski algorithm for the synthesis of the regular expressions
+        - transitive_closure:
+            long: transitive_closure
+            short: t
+            help: Use the Transitive Closure algorithm for the synthesis of the regular expressions
+        - state_elimination:
+            long: state_elimination
+            short: s
+            help: Use the State Elimination algorithm for the synthesis of the regular expressions
+        - via_petrify:
+            long: via_petrify
+            short: p
+            help: Use the derivation via Petri nets for the synthesis of the regular expressions
+        - all_algorithms:
+            long: all_algorithms
+            short: a
+            help: Use all the algorithms for the synthesis of the regular expressions
+        - with_variants:
+            long: with_variants
+            short: v
+            help: Use variants for the composition of interaction models
+  - sync_caut_composition:
+      about: Synchronous Composition of a system of communicating automata into a global interaction model
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - file:
+            required: true
+            index: 1
+            help: File of the system of concurrent automata in tha .caut format
+        - brzozowski:
+            long: brzozowski
+            short: b
+            help: Use the Brzozowski algorithm for the synthesis of the regular expressions
+        - transitive_closure:
+            long: transitive_closure
+            short: t
+            help: Use the Transitive Closure algorithm for the synthesis of the regular expressions
+        - state_elimination:
+            long: state_elimination
+            short: s
+            help: Use the State Elimination algorithm for the synthesis of the regular expressions
+        - via_petrify:
+            long: via_petrify
+            short: p
+            help: Use the derivation via Petri nets for the synthesis of the regular expressions
+        - all_algorithms:
+            long: all_algorithms
+            short: a
+            help: Use all the algorithms for the synthesis of the regular expressions
+  - caut_composition_benchmark:
+      about: Benchmarking of the the composition of systems of communicating automata into a global interaction model
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - dataset_folder:
+            required: true
+            index: 1
+            help: Folder containing the use cases in the .caut format
+  - cfsm_to_caut:
+      about: Translation of CFSM in the Lange et al. style into a system of concurrent automata in the .caut format
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - file:
+            required: true
+            index: 1
+            help: File of the CFSM
+        - target_folder:
+            long: target_folder
+            short: t
+            value_name: TARGET_FOLDER
+            takes_value: true
+            help: Indicate the target folder where the .caut file will be saved. Default value is the current folder of the executable.
+  - petri_net_to_regex:
+      about: Convert a safe Petri net into a regular expression
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - file:
+            required: true
+            index: 1
+            help: File of the Petri net in the STG format (.g or .out)
+  - aut_to_regex:
+      about: Convert an NFA (or DFA) into a regular expression
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - file:
+            required: true
+            index: 1
+            help: File of the of the automaton in the .aut format
+        - brzozowski:
+            long: brzozowski
+            short: b
+            help: Use the Brzozowski algorithm for the synthesis of the regular expressions
+        - transitive_closure:
+            long: transitive_closure
+            short: t
+            help: Use the Transitive Closure algorithm for the synthesis of the regular expressions
+        - state_elimination:
+            long: state_elimination
+            short: s
+            help: Use the State Elimination algorithm for the synthesis of the regular expressions
+        - via_petrify:
+            long: via_petrify
+            short: p
+            help: Use the derivation via Petri nets for the synthesis of the regular expressions
+        - all_algorithms:
+            long: all_algorithms
+            short: a
+            help: Use all the algorithms for the synthesis of the regular expressions
+  - draw_interaction:
+      about: Draws an interaction model
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - hsf:
+            required: true
+            index: 1
+            help: hsf file
+        - hif:
+            required: true
+            index: 2
+            help: hif file
+  - draw_petri_net:
+      about: Draws a Petri net in the STG format (.g or .out)
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - file:
+            required: true
+            index: 1
+            help: File of the Petri net in the STG format (.g or .out)
+  - draw_transition_system:
+      about: Draws a transition system in the STG format (.g or .out)
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - file:
+            required: true
+            index: 1
+            help: File of the transition system in the STG format (.g or .out)
+  - draw_automaton:
+      about: Draws a automaton in the .aut format
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - file:
+            required: true
+            index: 1
+            help: File of the transition system in the .aut format
+  - draw_caut:
+      about: Draws a system of communicating automata in the .caut format, and produces a graph in .dot format, and a .png image
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - file:
+            required: true
+            index: 1
+            help: File of the transition system in the .caut format
+  - draw_cfsm:
+      about: Draws a system of CFSM in the STG format (.g or .out)
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - file:
+            required: true
+            index: 1
+            help: File of the transition system in the STG format (.g or .out)
+        - gates:
+            long: gates
+            short: g
+            help: Draw the system of CFSM with gates with the same convention as to interactions models
+  - cfsm_composition_benchmark:
+      about: Run a benchmark of the composition of a system of communicating automata into a global interaction model
+      version: "0.0.0"
+      author: Joel Nguetoum
+      args:
+        - folder:
+            required: true
+            index: 1
+            help: Folder containing the files of the CFSMs (Lange et al,2015 style)
+  - test:
+      about: Various tests
+      version: "0.0.0"
+      author: Joel Nguetoum
+
+

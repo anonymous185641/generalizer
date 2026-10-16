@@ -1,0 +1,37 @@
+@automata{usr;dev;srv}
+@messages{not;cfg;png;sta;rep;hbt}
+@gates{1;2;3;4;5;6}
+
+
+
+.automaton usr
+q0 recvfrom(srv,not)[1] q1
+q1 recvfrom(dev,sta)[3] q2
+q2 sendto(srv,rep)[4] q1
+q1 recvfrom(dev,hbt)[6] q1
+.initial state {q0}
+.final states {q1}
+.end
+
+.automaton dev
+q0 recvfrom(srv,cfg)[2] q1
+q0 sendto(usr,sta)[3] q0
+q0 recvfrom(srv,png)[5] q2
+q2 sendto(usr,hbt)[6] q0
+q2 recvfrom(srv,cfg)[2] q3
+q1 sendto(usr,sta)[3] q1
+q1 recvfrom(srv,png)[5] q3
+q3 sendto(usr,hbt)[6] q1
+.initial state {q0}
+.final states {q1}
+.end
+
+
+.automaton srv
+q0 sendto(usr,not)[1] q1
+q1 sendto(dev,cfg)[2] q2
+q2 recvfrom(usr,rep)[4] q2
+q2 sendto(dev,png)[5] q2
+.initial state {q0}
+.final states {q2}
+.end

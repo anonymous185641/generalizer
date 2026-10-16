@@ -1,0 +1,23 @@
+
+WHITESPACE = _{ " " | "\r\n" | "\n" | "\t" | "\r" }
+COMMENT = _{ "/*" ~ (!"*/" ~ ANY)* ~ "*/" }
+STRING = @{ LETTER ~ (LETTER | ASCII_DIGIT | "_")* }
+
+
+SIG_MS_DECL = { "@message" ~ "{" ~
+	STRING ~ (";" ~ STRING)* ~ (";")?
+    ~ "}"
+    }
+    
+SIG_LF_DECL = { "@lifeline" ~ "{" ~
+	STRING ~ (";" ~ STRING)* ~ (";")?
+	~ "}"
+	}
+
+SIGNATURE_SECTION = _{ SIG_MS_DECL
+                      |SIG_LF_DECL
+                     }
+                     
+SIGNATURE = { SIGNATURE_SECTION* }
+HSF_PEST_FILE = _{ SOI ~ SIGNATURE ~ EOI }
+

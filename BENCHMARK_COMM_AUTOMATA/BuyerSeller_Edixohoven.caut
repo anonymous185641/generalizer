@@ -1,0 +1,38 @@
+@automata{b1;s;b2}
+@messages{string;int;ok;quit;date}
+@gates{1;2;3;4;5;6;7;8}
+
+.automaton b1
+q0 sendto(s,string)[1] q1
+q1 recvfrom(s,int)[2] q2
+q2 sendto(b2,int)[3] q3
+.initial state {q0}
+.final states {q3}
+.end
+
+.automaton b2
+q0 recvfrom(s,int)[4] q1
+q0 recvfrom(b1,int)[3] q2
+q1 recvfrom(b1,int)[3] q3
+q2 recvfrom(s,int)[4] q3
+q3 sendto(s,ok)[5] q4
+q3 sendto(s,quit)[8] q6
+q4 sendto(s,string)[6] q5
+q5 recvfrom(s,date)[7] q6
+.initial state {q0}
+.final states {q6}
+.end
+
+.automaton s
+q0 recvfrom(b1,string)[1] q1
+q1 sendto(b2,int)[4] q2
+q2 sendto(b1,int)[2] q4
+q1 sendto(b1,int)[2] q3
+q3 sendto(b2,int)[4] q4
+q4 recvfrom(b2,quit)[8] q7
+q4 recvfrom(b2,ok)[5] q5
+q5 recvfrom(b2,string)[6] q6
+q6 sendto(b2,date)[7] q7
+.initial state {q0}
+.final states {q7}
+.end

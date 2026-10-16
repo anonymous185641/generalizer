@@ -1,0 +1,37 @@
+WHITESPACE = _{ " " | "\t" | "\r" }
+NEWLINE = _{ "\r\n" | "\n" }
+END_FILE = _{ " " | "\r\n" | "\n" | "\t" | "\r" }
+
+STRING = @{ LETTER ~ (LETTER | ASCII_DIGIT | "_" | "(" | ")" | ",")* }
+
+END = _{ ".end" }
+GRAPH_NAME = { STRING }
+TRANSITION = { STRING }
+STATE_NAME = { STRING }
+STATE_OR_TRANSITION = {STRING}
+MARKING = { "{" ~ STATE_NAME ~ ("," ~ STATE_NAME)* ~ "}" }
+
+DCL_GRAPH_NAME = { ".model" ~ WHITESPACE* ~ GRAPH_NAME}
+DCL_GRAPH_TYPE = { ".state" ~ WHITESPACE* ~ "graph" }
+DCL_TRANSITIONS = { ".dummy"~(WHITESPACE*~TRANSITION)* }
+DCL_MARKING = { ".marking" ~ WHITESPACE* ~ MARKING }
+DCL_PATH  = { STATE_OR_TRANSITION ~ (WHITESPACE* ~ STATE_OR_TRANSITION)* }
+
+
+PEST_FILE = _{
+            SOI
+            ~ DCL_GRAPH_NAME
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ DCL_TRANSITIONS
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ DCL_GRAPH_TYPE
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ DCL_PATH  ~ (NEWLINE ~ DCL_PATH )*
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ DCL_MARKING
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ END
+            ~ END_FILE*
+            ~ EOI}
+
+

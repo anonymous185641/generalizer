@@ -1,0 +1,41 @@
+@automata{A0;A1;A2;A3}
+@messages{connect;setup;syncAccess;access;logout;syncLog;syncLogout;log}
+@gates{1;2;3;4;5;6;7;8}
+
+.automaton A0
+q0 sendto(A2,connect)[1] q1
+q1 recvfrom(A2,syncAccess)[3] q2
+q2 sendto(A1,access)[4] q2
+q2 sendto(A2,logout)[5] q3
+q3 sendto(A1,syncLogout)[7] q4
+q4 recvfrom(A1,syncLog)[6] q0
+.initial state {q0}
+.final states {q0}
+.end
+
+.automaton A1
+q0 recvfrom(A2,setup)[2] q1
+q1 recvfrom(A0,access)[4] q1
+q1 recvfrom(A0,syncLogout)[7] q2
+q2 sendto(A3,log)[8] q3
+q3 sendto(A0,syncLog)[6] q0
+.initial state {q0}
+.final states {q0}
+.end
+
+.automaton A2
+q0 recvfrom(A0,connect)[1] q1
+q1 sendto(A0,syncAccess)[3] q2
+q2 sendto(A1,setup)[2] q4
+q1 sendto(A1,setup)[2] q3
+q3 sendto(A0,syncAccess)[3] q4
+q4 recvfrom(A0,logout)[5] q0
+.initial state {q0}
+.final states {q0}
+.end
+
+.automaton A3
+q0 recvfrom(A1,log)[8] q0
+.initial state {q0}
+.final states {q0}
+.end

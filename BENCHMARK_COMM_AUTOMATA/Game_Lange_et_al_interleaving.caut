@@ -1,0 +1,47 @@
+@automata{A0;A1;A2;A3}
+@messages{blose;busy;bwin;close;cwin;free;msg;sig}
+@gates{1;2;3;4;5;6;7;8}
+
+.automaton A0
+alice0 sendto(A1,bwin)[1] alice1
+alice0 sendto(A2,cwin)[2] alice1
+alice1 recvfrom(A1,sig)[3] alice2
+alice1 recvfrom(A2,msg)[4] alice3
+alice2 recvfrom(A2,msg)[4] alice4
+alice3 recvfrom(A1,sig)[3] alice4
+alice4 sendto(A3,free)[5] alice0
+.initial state {alice0}
+.final states {alice0}
+.end
+
+.automaton A1
+bob0 recvfrom(A0,bwin)[1] bob1
+bob1 sendto(A2,close)[6] bob2
+bob0 recvfrom(A2,blose)[7] bob2
+bob2 sendto(A0,sig)[3] bob0
+.initial state {bob0}
+.final states {bob0}
+.end
+
+.automaton A2
+carol0 recvfrom(A1,close)[6] carol3
+carol0 sendto(A3,busy)[8] carol2
+carol0 recvfrom(A0,cwin)[2] carol1
+carol1 sendto(A3,busy)[8] carol4
+carol1 sendto(A1,blose)[7] carol3
+carol2 recvfrom(A1,close)[6] carol5
+carol2 recvfrom(A0,cwin)[2] carol4
+carol3 sendto(A3,busy)[8] carol5
+carol4 sendto(A1,blose)[7] carol5
+carol5 sendto(A0,msg)[4] carol0
+.initial state {carol0}
+.final states {carol0}
+.end
+
+.automaton A3
+dave0 recvfrom(A2,busy)[8] dave1
+dave1 recvfrom(A0,free)[5] dave0
+.initial state {dave0}
+.final states {dave0}
+.end
+

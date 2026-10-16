@@ -1,0 +1,21 @@
+@automata{User;Server}
+@messages{REQ;ACK;DONE;ALARM}
+@gates{1;2;3;4}
+
+.automaton User
+ready sendto(Server,REQ)[1] wait
+wait sendto(Server,DONE)[3] ready
+ready sendto(Server,ALARM)[4] register
+register recvfrom(Server,ACK)[2] ready
+.initial state {ready}
+.final states {ready}
+.end
+
+.automaton Server
+idle recvfrom(User,REQ)[1] service
+service recvfrom(User,DONE)[3] idle
+idle recvfrom(User,ALARM)[4] fault
+fault sendto(User,ACK)[2] idle
+.initial state {idle}
+.final states {idle}
+.end

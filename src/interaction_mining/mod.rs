@@ -1,0 +1,10 @@
+mod gen_multitraces;
+mod multitraces_to_samples;
+mod regex_to_interaction;
+pub mod experiments;
+mod tagging;
+pub mod paths;
+mod regex_to_interaction_non_formatted;
+mod mining_by_local_synchronization;
+mod regex_to_interaction_vp_basic;
+mod trace_filtering;

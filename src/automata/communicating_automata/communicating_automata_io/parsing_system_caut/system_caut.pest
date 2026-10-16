@@ -1,0 +1,62 @@
+WHITESPACE = _{ " " | "\t" | "\r" }
+NEWLINE = _{ "\r\n" | "\n" }
+END_FILE = _{ " " | "\r\n" | "\n" | "\t" | "\r" }
+
+STRING = @{ LETTER ~ (LETTER | ASCII_DIGIT | "_" | "(" | ")" | "," | "[" | "]")* }
+
+END = _{ ".end" }
+
+
+STATE_NAME = { STRING }
+
+MESSAGE = {STRING}
+
+AUTOMATON_NAME = {STRING}
+
+STATES = { "{" ~WHITESPACE*~ STATE_NAME~WHITESPACE* ~ (";"~WHITESPACE* ~ STATE_NAME)* ~WHITESPACE*~ "}" }
+
+TRANSITION = {STRING}
+
+NAME = { STRING }
+NAME_LIST = { "{" ~ WHITESPACE* ~ NAME ~ (";" ~ WHITESPACE* ~ NAME)* ~ WHITESPACE* ~ "}" }
+
+GATE = { ASCII_DIGIT+ }
+GATE_LIST={"{" ~ WHITESPACE* ~ GATE ~ (";" ~ WHITESPACE* ~ GATE)* ~ WHITESPACE* ~ "}"}
+
+GATE_TAG = {"["~GATE~"]"}
+
+DCL_AUTOMATA_NAMES = {"@automata" ~ WHITESPACE* ~ NAME_LIST}
+DCL_MESSAGE_NAMES = {"@messages" ~ WHITESPACE* ~ NAME_LIST}
+DCL_GATES_ALL = {"@gates" ~ WHITESPACE* ~ GATE_LIST}
+
+DCL_GRAPH_TYPE = { ".automaton" ~ WHITESPACE* ~ AUTOMATON_NAME }
+DCL_PATH  = { STATE_NAME ~ TRANSITION  ~ STATE_NAME ~ GATE_TAG? }
+DCL_INITIAL_STATE = { ".initial state" ~ WHITESPACE* ~ STATES }
+DCL_FINAL_STATES = { ".final states" ~ WHITESPACE* ~ STATES }
+
+AUTOMATON = {
+             DCL_GRAPH_TYPE
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ DCL_PATH  ~ (NEWLINE ~ DCL_PATH)*
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ DCL_INITIAL_STATE
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ DCL_FINAL_STATES
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ END
+           }
+
+PEST_FILE = _{
+            SOI
+            ~DCL_AUTOMATA_NAMES
+             ~ WHITESPACE* ~ NEWLINE+ ~ WHITESPACE*
+             ~DCL_MESSAGE_NAMES
+             ~ WHITESPACE* ~ NEWLINE+ ~ WHITESPACE*
+             ~DCL_GATES_ALL
+             ~ WHITESPACE* ~ NEWLINE+ ~ WHITESPACE*
+            ~ (AUTOMATON~ WHITESPACE* ~ NEWLINE+ ~ WHITESPACE*)+
+            ~ WHITESPACE* ~ NEWLINE? ~ WHITESPACE*
+            ~ END_FILE*
+            ~ EOI}
+
+

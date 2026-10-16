@@ -1,0 +1,38 @@
+@automata{Client;Seller;Bank}
+@messages{askprice;price;buy;cancel;conf;askpay;infopay;transaction;auth;refusal}
+@gates{1;2;3;4;5;6;7;8;9}
+
+.automaton Client
+q0 sendto(Seller,askprice)[1] q1
+q1 recvfrom(Seller,price)[2] q0
+q0 sendto(Seller,buy)[3] q2
+q2 recvfrom(Bank,askpay)[4] q3
+q3 sendto(Bank,infopay)[5] q4
+q4 recvfrom(Seller,cancel)[6] q0
+q4 recvfrom(Seller,conf)[7] q0
+.initial state {q0}
+.final states {q0}
+.end
+
+.automaton Seller
+q0 recvfrom(Client,askprice)[1] q1
+q1 sendto(Client,price)[2] q0
+q0 recvfrom(Client,buy)[3] q2
+q2 sendto(Bank,transaction)[8] q3
+q3 recvfrom(Bank,auth)[9] q4
+q4 sendto(Client,conf)[7] q0
+q3 recvfrom(Bank,refusal)[10] q5
+q5 sendto(Client,cancel)[6] q0
+.initial state {q0}
+.final states {q0}
+.end
+
+.automaton Bank
+q0 recvfrom(Seller,transaction)[8] q1
+q1 sendto(Client,askpay)[4] q2
+q2 recvfrom(Client,infopay)[5] q3
+q3 sendto(Seller,auth)[9] q0
+q3 sendto(Seller,refusal)[10] q0
+.initial state {q0}
+.final states {q0}
+.end

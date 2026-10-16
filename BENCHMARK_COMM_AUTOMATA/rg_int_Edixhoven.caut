@@ -1,0 +1,27 @@
+@automata{a;b}
+@messages{int;bool;yes;no}
+@gates{1;2;3;4}
+
+.automaton a
+q0 sendto(b,int)[1] q1
+q1 sendto(b,bool)[2] q2
+q2 recvfrom(b,yes)[3] q4
+q2 recvfrom(b,no)[4] q4
+q1 recvfrom(b,yes)[3] q3
+q1 recvfrom(b,no)[4] q3
+q3 sendto(b,bool)[2] q4
+.initial state {q0}
+.final states {q4}
+.end
+
+.automaton b
+q0 recvfrom(a,int)[1] q1
+q1 recvfrom(a,bool)[2] q2
+q2 sendto(a,yes)[3] q4
+q2 sendto(a,no)[4] q4
+q1 sendto(a,yes)[3] q3
+q1 sendto(a,no)[4] q3
+q3 recvfrom(a,bool)[2] q4
+.initial state {q0}
+.final states {q4}
+.end

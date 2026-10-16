@@ -1,0 +1,51 @@
+WHITESPACE = _{ " " | "\t" | "\r" }
+NEWLINE = _{ "\r\n" | "\n" }
+END_FILE = _{ " " | "\r\n" | "\n" | "\t" | "\r" }
+
+LETTER = _{ ASCII_ALPHA }
+
+STRING = @{ LETTER ~ (LETTER | ASCII_DIGIT | "_" | "(" | ")" | "/" )* }
+
+STRING2 = @{  (LETTER | ASCII_DIGIT | "_" | "(" | ")" | "/" | "." | "-" | ":" | "<" | ">" | "+" | "," | "␊" )+ }
+
+COMMENTS = _{
+    "#" ~ (STRING2 | WHITESPACE)* ~ NEWLINE
+}
+
+END = _{ ".end" }
+GRAPH_NAME = { STRING2 }
+TRANSITION = { STRING }
+PLACE_NAME = { STRING }
+TRANSITION_NAME = { STRING }
+STATE_OR_TRANSITION = { STRING }
+MARKING_WITH_TRANSITION_PAIR = {"<" ~ WHITESPACE* ~ TRANSITION_NAME ~ WHITESPACE* ~ "," ~ WHITESPACE* ~ TRANSITION_NAME ~ WHITESPACE* ~ ">"}
+MARKING_SPECIFIER = { PLACE_NAME | MARKING_WITH_TRANSITION_PAIR }
+MARKING = { "{" ~ WHITESPACE* ~ MARKING_SPECIFIER ~ (WHITESPACE* ~ MARKING_SPECIFIER)* ~ WHITESPACE* ~ "}" }
+
+DCL_GRAPH_NAME = { ".model" ~ WHITESPACE* ~ GRAPH_NAME}
+DCL_GRAPH_TYPE = { ".graph" }
+DCL_TRANSITIONS = { ".dummy"~(WHITESPACE*~TRANSITION)* }
+DCL_MARKING = { ".marking" ~ WHITESPACE* ~ MARKING? }
+DCL_PATH  = { STATE_OR_TRANSITION ~ (WHITESPACE* ~ STATE_OR_TRANSITION)* }
+
+
+PEST_FILE = _{
+            SOI
+            ~ COMMENTS*
+            ~ WHITESPACE* ~ NEWLINE? ~ WHITESPACE*
+            ~ DCL_GRAPH_NAME
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ DCL_TRANSITIONS
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ DCL_GRAPH_TYPE
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ DCL_PATH  ~ (NEWLINE ~ DCL_PATH )*
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ DCL_MARKING
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ END
+            ~ END_FILE*
+            ~ EOI
+            }
+
+

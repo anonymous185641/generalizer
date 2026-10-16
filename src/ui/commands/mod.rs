@@ -1,0 +1,23 @@
+pub mod cli_lgg;
+pub mod cli_sclgg;
+pub mod cli_test;
+pub mod cli_compose;
+pub mod cli_parse_trace;
+
+pub mod cli_regex_inf;
+pub mod cli_ktssi;
+pub mod cli_petri_to_regex;
+pub mod cli_draw_petri_net;
+pub mod cli_draw_transition_system;
+pub mod cli_draw_interaction_model;
+pub mod cli_draw_cfsm;
+pub mod cli_cfsm_composition;
+pub mod cli_cfsm_composition_benchmark;
+pub mod cli_draw_communicating_automata;
+pub mod cli_caut_composition;
+pub mod cli_cfsm_to_caut;
+pub mod cli_aut_to_regex;
+pub mod cli_draw_automaton;
+pub mod cli_caut_composition_benchmark;
+pub mod cli_sync_product;
+pub mod cli_sync_caut_composition;

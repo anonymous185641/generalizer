@@ -1,0 +1,28 @@
+@automata{server;client;database}
+@messages{request;result;log}
+@gates{1;2;3;4;5;6}
+
+
+
+.automaton server
+q0 recvfrom(client,request)[1] q1
+q1 sendto(client,result)[2] q0
+.initial state {q0}
+.final states {q0}
+.end
+
+
+.automaton client
+q0 sendto(server,request)[1] q1
+q1 recvfrom(server,result)[2] q2
+q2 sendto(database,log)[3] q0
+.initial state {q0}
+.final states {q0}
+.end
+
+
+.automaton database
+q0 recvfrom(client,log)[3] q0
+.initial state {q0}
+.final states {q0}
+.end

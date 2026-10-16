@@ -1,0 +1,16 @@
+WHITESPACE = _{ " " | "\t" | "\r" }
+END_FILE = _{ " " | "\r\n" | "\n" | "\t" | "\r" }
+STRING = @{ LETTER ~ (LETTER | ASCII_DIGIT | "_" | "(" | ")" | ",")* }
+
+DCL_ARITY = { ASCII_DIGIT+ }
+DCL_NAME = { STRING }
+DCL_AXIOMS = { STRING }
+DCL_FUNCTION = { "Function: " ~  DCL_NAME  ~ DCL_ARITY ~ DCL_AXIOMS? }
+
+TERM = { STRING }
+
+TERM1 = { TERM }
+TERM2 = { TERM }
+PROBLEM = { "Problem:" ~ "x" ~ TERM1 ~ TERM2 }
+
+PEST_FILE = _{ SOI ~ DCL_FUNCTION ~ NEWLINE ~ (DCL_FUNCTION ~ NEWLINE)* ~ PROBLEM ~ END_FILE*  ~ EOI }

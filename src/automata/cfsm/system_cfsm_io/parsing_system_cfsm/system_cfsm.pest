@@ -1,0 +1,50 @@
+WHITESPACE = _{ " " | "\t" | "\r" }
+NEWLINE = _{ "\r\n" | "\n" }
+END_FILE = _{ " " | "\r\n" | "\n" | "\t" | "\r" }
+
+STRING = @{ LETTER ~ (LETTER | ASCII_DIGIT | "_" | "(" | ")" | ",")* }
+
+END = _{ ".end" }
+
+GRAPH_NAME = { STRING }
+
+STATE_NAME = { STRING }
+
+MESSAGE = {STRING}
+COMMUNICATION_TYPE = {"!" | "?"}
+INTERLOCUTOR = { ASCII_DIGIT+ }
+TRANSITION = { INTERLOCUTOR ~ COMMUNICATION_TYPE  ~ MESSAGE }
+
+
+MARKING_MANY = { "{" ~ STATE_NAME ~ ("," ~ STATE_NAME)* ~ "}" }
+MARKING_SINGLE = { STATE_NAME }
+MARKING = { MARKING_MANY | MARKING_SINGLE }
+
+DCL_GRAPH_NAME = { ".model" ~ WHITESPACE* ~ GRAPH_NAME}
+DCL_GRAPH_TYPE = { ".state" ~ WHITESPACE* ~ "graph" }
+DCL_OUTPUT = _{ ".outputs"}
+DCL_MARKING = { ".marking" ~ WHITESPACE* ~ MARKING }
+DCL_PATH  = { STATE_NAME ~ TRANSITION  ~ STATE_NAME }
+
+GRAPH = {
+             DCL_GRAPH_NAME?
+            ~ WHITESPACE* ~ NEWLINE? ~ WHITESPACE*
+            ~ DCL_OUTPUT?
+            ~ WHITESPACE* ~ NEWLINE? ~ WHITESPACE*
+            ~ DCL_GRAPH_TYPE
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ DCL_PATH  ~ (NEWLINE ~ DCL_PATH)*
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ DCL_MARKING
+            ~ WHITESPACE* ~ NEWLINE ~ WHITESPACE*
+            ~ END
+           }
+
+PEST_FILE = _{
+            SOI
+            ~ (GRAPH~ WHITESPACE* ~ NEWLINE* ~ WHITESPACE*)*
+            ~ WHITESPACE* ~ NEWLINE? ~ WHITESPACE*
+            ~ END_FILE*
+            ~ EOI}
+
+

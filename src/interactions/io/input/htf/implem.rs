@@ -1,0 +1,102 @@
+/*
+Copyright 2020 Erwan Mahe (github.com/erwanM974)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+
+use std::collections::{BTreeSet, HashSet};
+use maplit::btreeset;
+use pest::iterators::Pair;
+
+
+
+#[allow(unused_imports)]
+use pest::Parser;
+use crate::interactions::io::input::error::ParsingError;
+use crate::interactions::io::input::htf::multi_trace::trace_canal_from_pair;
+use crate::interactions::io::input::htf::parser::{HtfParser, Rule};
+use crate::interactions::io::input::htf::trace::trace_sequence_from_pair;
+use crate::interactions::syntax::colocalizations::CoLocalizations;
+use crate::interactions::syntax::general_context::GeneralContext;
+use crate::interactions::syntax::traces::multitrace::MultiTrace;
+
+
+pub fn multitrace_from_text(gen_ctx : &GeneralContext,
+                            multitrace_str : &String) -> Result<(CoLocalizations,MultiTrace),ParsingError> {
+    match HtfParser::parse(Rule::HTF_PEST_FILE, multitrace_str) {
+        Err(e) => {
+            return Err( ParsingError::MatchError(e.to_string()) );
+        },
+        Ok( ref mut htf_pair ) => {
+            let mut content = htf_pair.next().unwrap().into_inner();
+            let first_pair : Pair<Rule> = content.next().unwrap();
+            match first_pair.as_rule() {
+                Rule::TRACE_SEQUENCE => {
+                    let mut lifelines : BTreeSet<usize> = btreeset!{};
+                    match trace_sequence_from_pair(gen_ctx,first_pair,&btreeset!{},&mut lifelines,true) {
+                        Err(e) => {
+                            return Err(e);
+                        },
+                        Ok( got_trace ) => {
+                            let co_localization = CoLocalizations::get_trivial_partition(lifelines.len());
+                            let multi_trace : MultiTrace = vec![got_trace];
+                            return Ok( (co_localization,multi_trace) );
+                        }
+                    }
+                },
+                Rule::MULTI_TRACE => {
+                    let mut unavailable_lifelines : BTreeSet<usize> = btreeset!{};
+                    let mut multi_trace : MultiTrace = vec![];
+                    let mut colocs : Vec<BTreeSet<usize>> = vec![];
+                    for canal_trace_pair in first_pair.into_inner() {
+                        match trace_canal_from_pair(gen_ctx,
+                                                    canal_trace_pair,
+                                                    &mut colocs,
+                                                    &mut multi_trace,
+                                                    &mut unavailable_lifelines) {
+                            Err(e) => {
+                                return Err(e);
+                            },
+                            Ok( () ) => {
+                                // do nothing
+                            }
+                        }
+                    }
+                    complete_canals_up_to_defined_lifelines(gen_ctx, &mut colocs, &mut multi_trace );
+                    return Ok( (CoLocalizations::new(colocs),multi_trace) );
+                },
+                _ => {
+                    panic!("what rule then ? : {:?}", first_pair.as_rule() );
+                }
+            }
+        }
+    }
+}
+
+
+fn complete_canals_up_to_defined_lifelines(gen_ctx : &GeneralContext,
+                                           colocs : &mut Vec<BTreeSet<usize>>,
+                                           multi_trace : &mut MultiTrace) {
+    let mut rem_lifelines : BTreeSet<usize> = gen_ctx.get_all_lfs_ids();
+    for coloc in colocs.iter() {
+        rem_lifelines = &rem_lifelines - coloc;
+    }
+    // ***
+    for lf_id in rem_lifelines {
+        colocs.push( btreeset!{lf_id} );
+        multi_trace.push(vec![]);
+    }
+    // ***
+}
+
