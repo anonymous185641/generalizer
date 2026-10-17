@@ -1,4 +1,4 @@
-
+[← Back to main README](../README.md)
 
 ## Communicating Automata Composition
 

@@ -1,3 +1,5 @@
+[← Back to main README](../README.md)
+
 # Benchmarking of the composition of communicating automata
 
 For selected systems of communicating automata, compose them into a global interaction using two techniqes:
@@ -43,6 +45,22 @@ provide the benchmark in the following folder [BENCHMARK_COMM_AUTOMATA](../BENCH
 
 We then provide the picture associated with the execution of each of the use case of the benchmark.
 
+[Running example](use_cases_pics/runningExample.md)
+
 [Health System *](use_cases_pics/HealthSystem-Star.md)
 
-TO DO: remainder of use cases
+[Game](use_cases_pics/Game.md)
+
+[Bargain *](use_cases_pics/Bargain-Star.md)
+
+[CloudSystemV4 *](use_cases_pics/CloudSystemV4-Star.md)
+
+[FilterCollaborator *](use_cases_pics/Filter-Collab-Star.md)
+
+[Rg](use_cases_pics/Rg.md)
+
+[Buyer Seller](use_cases_pics/Buyer-seller.md)
+
+[Bank](use_cases_pics/Bank.md)
+
+

@@ -43,3 +43,6 @@ of regular expressions.
 
 [Benchmarking of the composition of communicating automata](readme/benchmark-caut-comp.md)
 
+# License
+This project is licensed under the GNU GPL version 3 or later (GPL-3.0-or-later).  
+See the LICENSE file for details.
