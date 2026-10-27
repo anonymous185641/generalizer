@@ -43,6 +43,31 @@ The execution of the benchmark is done with the following command:
 Where `BENCHMARK_COMM_AUTOMATA` is the path folder containing the benchmark. We 
 provide the benchmark in the following folder [BENCHMARK_COMM_AUTOMATA](../BENCHMARK_COMM_AUTOMATA).
 
+A folder called ```TACAS_2027_BENCHMARK_output``` is created
+and contains the file outputs of the benchmark. Each use case
+has a dedicated folder containing the drawings of input automata,
+local interaction models and global interaction model.
+
+In particular, the folder ```TACAS_2027_BENCHMARK_output``` 
+contains a file name ```results.csv``` containing the table of results illustrated above.
+
+To visualize the table via command line (on linux), run the following command:
+
+```
+   $ csvlook -d '&' TACAS_2027_BENCHMARK_output/results.csv | less -S
+```
+
+For a shrinked version of the table, run the following command:
+
+```
+    $ csvlook -d '&' --max-column-width 10 TACAS_2027_BENCHMARK_output/results.csv
+```
+
+The table printed in command line is as follows: 
+![Table of results](images/benchmark/table_cmd.png)
+
+
+
 We then provide the picture associated with the execution of each of the use case of the benchmark.
 
 [Running example](use_cases_pics/runningExample.md)

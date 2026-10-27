@@ -75,8 +75,8 @@ pub fn cli_compose(matches: &ArgMatches) {
 
 
     //Printing of the axioms considered
-    print_axioms(&axioms);
-
+    //print_axioms(&axioms);
+    println!("Composition using variants");
 
 
     let comp_dir = "Interaction Composition Output";

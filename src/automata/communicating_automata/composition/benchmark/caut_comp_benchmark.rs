@@ -45,9 +45,9 @@ impl CautCompBenchmark{
         let mut use_cases = Vec::new();
 
         for system in fs::read_dir(&self.dataset_folder)?{
-           // let system_name = system?.file_name().into_string().unwrap();
             let system_name = system?.path().to_str().unwrap().to_string();
 
+            println!("Parsing {}",system_name);
             let caut = communicating_automata_parse_file(&system_name)?;
 
             use_cases.push(caut);

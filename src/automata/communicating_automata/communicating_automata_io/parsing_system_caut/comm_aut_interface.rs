@@ -13,21 +13,15 @@ pub fn communicating_automata_parse_file(file_path: &str) -> Result<SystemCommun
 
     let file_name = path.file_name().unwrap().to_str().unwrap();
 
-    /* File extension is no big deal
-    let file_extension = path.extension().unwrap().to_str().unwrap();
-
-    if file_extension != "g" && file_extension != "out" {
-        return Err(format!("File extension is not .g or .out: {}", file_path));
-    }
-     */
-
     match fs::read_to_string(path) {
         Ok(unparsed_string)=>{
 
             let mut parsed_caut = communicating_aut_parse_string(&unparsed_string)?;
-            
-            parsed_caut.system_name = file_name.to_string();
-            
+
+
+            //parsed_caut.system_name = file_name.to_string();
+           parsed_caut.system_name = path.file_stem().unwrap().to_str().unwrap().to_string();
+
             Ok(parsed_caut)
 
         },

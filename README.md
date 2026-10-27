@@ -21,6 +21,26 @@ cargo build --release
 
 An executable will be created in "./target/release".
 
+## Python and Maude installation
+
+You should install python 3.12 or later. 
+
+For anti-unfication we use the [maude](https://github.com/maude-lang/Maude) system, via its python interface.
+To install maude execute the following commands:
+
+```
+    python3 -m pip install maude
+```
+
+
+If you use Windows, use ```py``` instead of ```python3``` in the above command.
+
+## Petrify installation
+
+To be able to run the benchmarking of the 
+composition of communicating automata, download  [Petrify](https://web.archive.org/web/*/https://www.cs.upc.edu/~jordicf/petrify/distrib/*)
+and place its executable in the same directory as the executable of Generalizer.
+The name of the executable of Petrify should be ```petrify```.
 
 # Composition of communicating automata
 

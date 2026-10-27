@@ -28,12 +28,32 @@ impl Variant {
 
         //println!("in");
 
+        let output = if cfg!(target_os = "linux") || cfg!(target_os = "macos") {
+             Command::new("python3")
+                .arg("-c")
+                .arg(script)
+                .arg(t_stringed)
+                .output()
+                .expect("Failed to execute command")
+        } else if cfg!(target_os = "windows") {
+            Command::new("py")
+                .arg("-c")
+                .arg(script)
+                .arg(t_stringed)
+                .output()
+                .expect("Failed to execute command")
+        }else{
+            panic!("OS not supported");
+        };
+        /*
         let output = Command::new("python3")
             .arg("-c")
             .arg(script)
             .arg(t_stringed)
             .output()
             .expect("Failed to execute command");
+
+         */
         //println!("out");
         if !output.status.success() {
             eprintln!(
